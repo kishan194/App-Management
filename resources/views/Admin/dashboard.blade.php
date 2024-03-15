@@ -4,4 +4,5 @@
             {{ __('Dashboard') }}  {{Auth::guard('admin')->user()->name}}
         </h2>
     </x-slot>
+    <a href="{{route('admin.create')}}">ADD APP</a>
 </x-admin-layout>

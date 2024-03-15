@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
+use App\Http\Controllers\AppManageController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.'],function(){
@@ -51,4 +52,8 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::put('password', [PasswordController::class, 'update'])->name('password.update');
       
           Route::post('logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+          Route::get('create',[AppManageController::class,'create'])->name('create');
+
+          Route::post('store',[AppManageController::class,'AppStore'])->name('App.Store');
       });

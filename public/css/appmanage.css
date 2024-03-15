@@ -1,0 +1,35 @@
+.form-group {
+          margin-bottom: 1.2rem; 
+      }
+      
+      .form-label {
+          display: block;
+          margin-bottom: 0.5rem; 
+      }
+      
+      .form-control {
+          width: 100%; 
+          padding: 0.5rem; 
+          font-size: 1rem; 
+          border: 1px solid #ced4da; 
+          border-radius: 0.25rem; 
+      }
+      
+      input[type="file"] {
+          display: block; 
+          margin-top: 0.5rem; 
+      }
+      
+      button[type="submit"] {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          background-color: #28a745; 
+          color: #fff; 
+          border: none; 
+          border-radius: 0.25rem;
+          cursor: pointer; 
+      }
+      
+      button[type="submit"]:hover {
+          background-color: #218838; 
+      }
