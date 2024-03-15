@@ -1,0 +1,45 @@
+table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+      
+      
+      th {
+          background-color: #f2f2f2;
+          padding: 8px;
+          text-align: left;
+      }
+
+      td {
+          padding: 8px;
+          border-bottom: 1px solid #ddd;
+      }
+      
+    
+      tbody tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+      
+  
+      td img {
+          display: block; 
+          margin: 0 auto; 
+      }
+      
+    
+      .btn {
+          padding: 6px 12px;
+          text-decoration: none;
+          border: none;
+          cursor: pointer;
+      }
+      
+      .btn-primary {
+          background-color: #007bff;
+          color: #fff;
+      }
+      
+      .btn-danger {
+          background-color: #dc3545;
+          color: #fff;
+      }

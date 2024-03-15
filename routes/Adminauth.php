@@ -56,4 +56,6 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::get('create',[AppManageController::class,'create'])->name('create');
 
           Route::post('store',[AppManageController::class,'AppStore'])->name('App.Store');
+
+          Route::get('index',[AppManageController::class,'index'])->name('App.index');
       });
