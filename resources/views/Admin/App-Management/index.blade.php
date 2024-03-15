@@ -37,9 +37,9 @@
                                       <td>{{$item->meta_keywords}}</td> 
                                       <td>{{$item->meta_description}}</td> 
                                       <td>{{$item->publish_status}}</td> 
-                                      <td> <a href="#" class="btn btn-primary">Edit</td>
+                                   <td> <a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
                                       <td> <a href="#" class="btn btn-danger">Delete</td>
-                                 </tr>
+                                 </tr>  
                               </tbody>   
                        @endforeach
                        </table>

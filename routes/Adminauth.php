@@ -58,4 +58,9 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::post('store',[AppManageController::class,'AppStore'])->name('App.Store');
 
           Route::get('index',[AppManageController::class,'index'])->name('App.index');
+
+          //update app route
+          Route::get('/updateApp/{id}',[AppManageController::class,'updateapp'])->name('update.app');
+          Route::POST('edit',[AppManageController::class,'editApp'])->name('edit.app');
+
       });

@@ -42,7 +42,41 @@ class AppManageController extends Controller
              $app->meta_description = $request->meta_description;
              $app->publish_status = $request->publish_status;
              $app->save();
-             return back()->withSuccess('App Added');
-             
+             return back()->withSuccess('App Added');   
+      }
+      public function updateapp($id){
+        $app = AppManage::where('id',$id)->find($id);
+      
+        return view('Admin.App-Management.UpdateApp',['data' => $app]);
+      }
+
+      public function editApp(Request $request, $id)
+      {
+
+        $app = AppManage::where('id',$id)->first();
+       
+
+          $logo = time(). '.' .$request->logo->extension();
+          $request->logo->move(public_path('products'),$logo);
+      
+          $image = time(). '.' .$request->image->extension();
+          $request->image->move(public_path('products'),$image);
+
+          $app = new AppManage();
+          $app->name = $request->name;
+          $app->description = $request->description;
+          $app->logo = $logo;
+          $app->image = $image;
+          $app->PackageName = $request->PackageName;
+          $app->meta_keywords = $request->meta_keywords;
+          $app->meta_description = $request->meta_description;
+          $app->publish_status = $request->publish_status;
+          dd($request->all());
+          $app->save();
+          return back()->withSuccess('App Added');  
+          
+        
+        
+
       }
 }
