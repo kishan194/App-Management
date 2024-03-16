@@ -10,6 +10,11 @@
 @endsection
 
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <h1>View All App</h1>
                <table>
                    <thead>
@@ -43,4 +48,11 @@
                               </tbody>   
                        @endforeach
                        </table>
+@endsection
+@section('script')
+  <script>
+    setTimeout(function() {
+        document.getElementById('successMessage').style.display = 'none';
+    }, 4000); 
+</script>
 @endsection

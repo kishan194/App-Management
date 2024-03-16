@@ -7,5 +7,5 @@
     </x-slot>
      <a class="btn btn-info" href="{{route('admin.create')}}">ADD APP</a>
 
-     <a class="btn btn-info" href="{{route('admin.App.index')}}">View APP</a>
+     <a class="btn btn-info" href="{{route('admin.App.index')}}">Manage APP</a>
 </x-admin-layout>

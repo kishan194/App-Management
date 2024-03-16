@@ -18,6 +18,7 @@
         <h1>Edit App</h1>
             <form method="post" action="{{route('admin.edit.app', $data->id)}}" enctype="multipart/form-data">
     @csrf
+     @method('PUT')
     <div class="form-group">
                 <label for="name">App Name</label>
                 <input type="text" name="name" class="form-control" value="{{$data->name}}" required>

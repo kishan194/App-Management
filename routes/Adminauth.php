@@ -61,6 +61,6 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
 
           //update app route
           Route::get('/updateApp/{id}',[AppManageController::class,'updateapp'])->name('update.app');
-          Route::POST('edit',[AppManageController::class,'editApp'])->name('edit.app');
+          Route::put('edit/{id}',[AppManageController::class,'editApp'])->name('edit.app');
 
       });

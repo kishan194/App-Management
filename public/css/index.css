@@ -43,3 +43,11 @@ table {
           background-color: #dc3545;
           color: #fff;
       }
+      @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; display: none; }
+    }
+
+    .alert {
+        animation: fadeOut 4s forwards;
+    }

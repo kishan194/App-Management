@@ -52,31 +52,42 @@ class AppManageController extends Controller
 
       public function editApp(Request $request, $id)
       {
-
-        $app = AppManage::where('id',$id)->first();
-       
-
-          $logo = time(). '.' .$request->logo->extension();
-          $request->logo->move(public_path('products'),$logo);
+          // Fetch the existing record from the database
+          $app = AppManage::find($id);
       
-          $image = time(). '.' .$request->image->extension();
-          $request->image->move(public_path('products'),$image);
-
-          $app = new AppManage();
+          if (!$app) {
+              return back()->withErrors('App not found.');
+          }
+      
+          // Handle logo update
+          if ($request->hasFile('logo')) {
+              $logo = time() . '.' . $request->logo->extension();
+              $request->logo->move(public_path('logo'), $logo);
+              $app->logo = $logo;
+          }
+      
+          // Handle image update
+          if ($request->hasFile('image')) {
+              $image = time() . '.' . $request->image->extension();
+              $request->image->move(public_path('images'), $image);
+              $app->image = $image;
+          }
+      
+          // Update other fields
           $app->name = $request->name;
           $app->description = $request->description;
-          $app->logo = $logo;
-          $app->image = $image;
           $app->PackageName = $request->PackageName;
           $app->meta_keywords = $request->meta_keywords;
           $app->meta_description = $request->meta_description;
           $app->publish_status = $request->publish_status;
-          dd($request->all());
+      
+          // Save the changes
           $app->save();
-          return back()->withSuccess('App Added');  
-          
+      
+          return redirect()->route('admin.App.index')->withSuccess('Data Update Successful.');    
+          }
         
         
 
       }
-}
+
