@@ -10,4 +10,6 @@
      <a class="btn btn-info" href="{{route('admin.App.index')}}">Manage APP</a>
 
      <a class="btn btn-info" href="{{route('admin.apk.create')}}">Upload Apk</a>
+
+     <a class="btn btn-info" href="{{route('admin.apk.Index')}}">Manage Apk</a>
 </x-admin-layout>

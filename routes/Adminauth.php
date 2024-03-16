@@ -72,6 +72,12 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::get('apkCreate',[ApkUploadController::class,'create'])->name('apk.create');
           Route::post('apkStore',[ApkUploadController::class,'ApkStore'])->name('apk.Store');
 
+          Route::get('apkindex',[ApkUploadController::class,'ApkIndex'])->name('apk.Index');
+
+          Route::get('apk/{filename}',[ApkUploadController::class,'download'])->name('apk.download');
+
+          Route::get('/updateApk/{id}',[ApkUploadController::class,'updateapk'])->name('update.apk');
+          Route::put('editApk/{id}',[ApkUploadController::class,'editApk'])->name('apk.edit');
           
 
       });

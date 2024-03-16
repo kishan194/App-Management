@@ -30,6 +30,45 @@ class ApkUploadController extends Controller
         // dd($request->all());
         $apkRelease->save();
         return redirect()->route('admin.apk.create')->with('success', 'APK release created successfully.');
+    }
+    public function ApkIndex(){
+               $apk = ApkUpload::all();
+               return view('Admin.Apk-upload.index',compact('apk'));
 
     }
+
+    
+public function download($filename)
+{
+    
+    $filePath = public_path("apk_path/{$filename}");
+
+    if (!file_exists($filePath)) {
+        abort(404);
+    }
+    return response()->download($filePath);
+}
+
+public function updateapk($id){
+    $apkUpload = ApkUpload::findOrFail($id); 
+    $appManage = AppManage::pluck('name', 'id');
+    return view('Admin.Apk-upload.update', compact('apkUpload', 'appManage'));
+}
+public function editapk(Request $request , $id){
+    $apk = ApkUpload::find($id);
+      
+    if ($request->hasFile('apk_path')) {
+        $apk_path = time() . '.' . $request->apk_path->extension();
+        $request->apk_path->move(public_path('apk_path'), $apk_path);
+      
+    }
+    $apk->app_id = $request->app_id;
+    $apk->apk_path = $request->apk_path;
+    $apk->apk_path= $apk_path;
+    $apk->version_name = $request->version_name;
+    $apk->release_notes = $request->release_notes;
+    $apk->save();
+    return redirect()->route('admin.apk.Index')->withSuccess('Data Update Successful.');    
+    }
+
 }
