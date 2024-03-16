@@ -52,39 +52,39 @@ class AppManageController extends Controller
 
       public function editApp(Request $request, $id)
       {
-          // Fetch the existing record from the database
+          
           $app = AppManage::find($id);
       
-          if (!$app) {
-              return back()->withErrors('App not found.');
-          }
-      
-          // Handle logo update
           if ($request->hasFile('logo')) {
               $logo = time() . '.' . $request->logo->extension();
               $request->logo->move(public_path('logo'), $logo);
               $app->logo = $logo;
           }
       
-          // Handle image update
+         
           if ($request->hasFile('image')) {
               $image = time() . '.' . $request->image->extension();
               $request->image->move(public_path('images'), $image);
               $app->image = $image;
           }
-      
-          // Update other fields
           $app->name = $request->name;
           $app->description = $request->description;
           $app->PackageName = $request->PackageName;
           $app->meta_keywords = $request->meta_keywords;
           $app->meta_description = $request->meta_description;
           $app->publish_status = $request->publish_status;
-      
-          // Save the changes
           $app->save();
       
           return redirect()->route('admin.App.index')->withSuccess('Data Update Successful.');    
+          }
+
+          public function DeleteApp($id){
+            $app = AppManage::find($id);
+            if(!is_null($app)){
+             $app->delete();
+            }
+            return redirect()->route('admin.App.index')->withSuccess('Data Delete Successful.');    
+
           }
         
         

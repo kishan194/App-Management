@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
+use App\Http\Controllers\ApkUploadController;
 use App\Http\Controllers\AppManageController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,7 +54,7 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
       
           Route::post('logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-          Route::get('create',[AppManageController::class,'create'])->name('create');
+          Route::get('create',[AppManageController::class,'create'])->name('App.create');
 
           Route::post('store',[AppManageController::class,'AppStore'])->name('App.Store');
 
@@ -62,5 +63,15 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           //update app route
           Route::get('/updateApp/{id}',[AppManageController::class,'updateapp'])->name('update.app');
           Route::put('edit/{id}',[AppManageController::class,'editApp'])->name('edit.app');
+
+          //delete app route
+          Route::get('deleteApp/{id}',[AppManageController::class,'DeleteApp'])->name('Delete.app');
+
+
+          //Apk Upload
+          Route::get('apkCreate',[ApkUploadController::class,'create'])->name('apk.create');
+          Route::post('apkStore',[ApkUploadController::class,'ApkStore'])->name('apk.Store');
+
+          
 
       });

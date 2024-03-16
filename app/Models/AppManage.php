@@ -19,4 +19,8 @@ class AppManage extends Model
                  'meta_description',
                  'publish_status'
     ];
+    public function appUpload()
+    {
+        return $this->hasOne(ApkUpload::class);
+    }
 }

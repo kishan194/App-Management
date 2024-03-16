@@ -77,14 +77,16 @@
             </div>
            
            <div class="form-group">
-                   <label for="publish_status">Publish Status</label>
-                   <div class="form-check">
-                       <input type="radio" name="publish_status" value="published" value="{{$data->publich_status}}"  class="form-check-input" id="publish">
-                       <label class="form-check-label" for="publish">Publish</label>
-                         </div>
-                      <div class="form-check">
-                           <input type="radio" name="publish_status" value="unpublished" class="form-check-input" id="unpublish">
-                           <label class="form-check-label" for="unpublish">Unpublish</label>
+                                <label for="publish_status">Publish Status</label>
+                                <div class="form-check">
+                                    <input type="radio" name="publish_status" value="published" {{ $data->publish_status == 'published' ? 'checked' : '' }} class="form-check-input" id="publish">
+                                    <label class="form-check-label" for="publish">Publish</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" name="publish_status" value="unpublished" {{ $data->publish_status == 'unpublished' ? 'checked' : '' }} class="form-check-input" id="unpublish">
+                                    <label class="form-check-label" for="unpublish">Unpublish</label>
+                                </div>
+                            </div>
                            @error('publish_status')
                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

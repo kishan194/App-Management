@@ -43,7 +43,7 @@
                                       <td>{{$item->meta_description}}</td> 
                                       <td>{{$item->publish_status}}</td> 
                                    <td> <a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
-                                      <td> <a href="#" class="btn btn-danger">Delete</td>
+                                      <td> <a href="{{route('admin.Delete.app',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
                                  </tr>  
                               </tbody>   
                        @endforeach
