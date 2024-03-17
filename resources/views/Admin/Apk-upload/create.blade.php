@@ -26,26 +26,31 @@
                                <option value="{{ $appId }}">{{ $appName }}</option>
                             @endforeach
                     </select>
+             @error('app_id')
+                   <div class="text-danger">{{ $message }}</div>
+             @enderror
           </div>
-          
             <div class="form-group">
                 <label for="Apk">ApkUpload</label>
                 <input type="file" name="apk_path" class="form-control-file">
-                 @error('apk_path')
-                   <div class="invalid-feedback">{{ $message }}</div>
+                 @error('apk_upload')
+                   <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="VersionName">Version Name</label>
-                <input type="text" name="version_name" class="form-control" required>
-                  @error('versionname')
-                   <div class="invalid-feedback">{{ $message }}</div>
+                <input type="text" name="version_name" class="form-control">
+                  @error('version_name')
+                   <div class="text-danger">{{ $message }}</div>
                   @enderror
             </div>
           <div class="form-group">
                             <label for="release_notes">Release Notes</label>
                             <textarea class="form-control" id="release_notes" name="release_notes" rows="3"></textarea>
                         </div>
+                         @error('release_notes')
+                   <div class="text-danger">{{ $message }}</div>
+                  @enderror
                
 
             <button type="submit" class="btn btn-primary">Submit</button>

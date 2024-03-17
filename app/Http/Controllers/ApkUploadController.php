@@ -14,12 +14,12 @@ class ApkUploadController extends Controller
     }
     public function ApkStore(Request $request){
         
-        // $validatedData = $request->validate([
-        //     'app_id' => 'required|exists:app_manages,id',
-        //     'apk_upload' => 'required|mimes:apk',
-        //     'version_name' => 'required|string',
-        //     'release_notes' => 'nullable|string',
-        // ]);
+        $request->validate([
+            'app_id' => 'required|exists:app_manages,id',
+            'apk_upload' => 'required|mimes:apk',
+            'version_name' => 'required|string',
+            'release_notes' => 'required|string',
+        ]);
         $apk_path = time(). '.' .$request->apk_path->extension();
         $request->apk_path->move(public_path('apk_path'),$apk_path);      
         $apkRelease = new ApkUpload();
@@ -57,10 +57,17 @@ public function updateapk($id){
 public function editapk(Request $request , $id){
     $apk = ApkUpload::find($id);
       
+    $request->validate([
+        'app_id' => 'required|exists:app_manages,id',
+        'apk_upload' => 'required|mimes:apk',
+        'version_name' => 'required|string',
+        'release_notes' => 'required|string',
+    ]);
+
+
     if ($request->hasFile('apk_path')) {
         $apk_path = time() . '.' . $request->apk_path->extension();
         $request->apk_path->move(public_path('apk_path'), $apk_path);
-      
     }
     $apk->app_id = $request->app_id;
     $apk->apk_path = $request->apk_path;

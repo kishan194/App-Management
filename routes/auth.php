@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -54,8 +55,10 @@ Route::middleware('auth')->group(function () {
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+         
+    Route::get('ViewApp',[UserController::class,'viewApp'])->name('View-App');
 
-  
-});
+    Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');
+
+    });

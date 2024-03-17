@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Validator; 
 use App\Models\AppManage;
 use Illuminate\Http\Request;
 
@@ -18,16 +18,18 @@ class AppManageController extends Controller
 
       public function AppStore(Request $request){
         
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048', 
-            'PackageName' => 'required',
-            'meta_keywords' => 'nullable',
-            'meta_description' => 'nullable',
-            'publish_status' => 'required|in:published,unpublished',
-        ]);
+          $request->validate([
+          'name' => 'required',
+          'description' => 'required',
+          'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+          'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', 
+          'PackageName' => 'required',
+          'meta_keywords' => 'nullable',
+          'meta_description' => 'nullable',
+          'publish_status' => 'required|in:published,unpublished',  
+          
+      ]);
+      
         $logo = time(). '.' .$request->logo->extension();
         $request->logo->move(public_path('logo'),$logo);
         $image = time(). '.' .$request->image->extension();
@@ -42,7 +44,8 @@ class AppManageController extends Controller
              $app->meta_description = $request->meta_description;
              $app->publish_status = $request->publish_status;
              $app->save();
-             return back()->withSuccess('App Added');   
+             return back()->withSuccess('App Added');
+             
       }
       public function updateapp($id){
         $app = AppManage::where('id',$id)->find($id);
@@ -52,6 +55,17 @@ class AppManageController extends Controller
 
       public function editApp(Request $request, $id)
       {
+        $request->validate([
+          'name' => 'required',
+          'description' => 'required',
+          'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+          'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', 
+          'PackageName' => 'required',
+          'meta_keywords' => 'nullable',
+          'meta_description' => 'nullable',
+          'publish_status' => 'required|in:published,unpublished',  
+          
+      ]);
           
           $app = AppManage::find($id);
       
