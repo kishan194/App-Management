@@ -78,4 +78,13 @@ public function editapk(Request $request , $id){
     return redirect()->route('admin.apk.Index')->withSuccess('Data Update Successful.');    
     }
 
+    public function DeleteApk($id){
+        $apk = ApkUpload::find($id);
+        if(!is_null($apk)){
+            $apk->delete();
+           }
+        return redirect()->route('admin.apk.Index')->withSuccess('Data Delete Successful.');    
+
+      }
+
 }

@@ -34,7 +34,7 @@
                                       <td>{{$item->version_name}}</td> 
                                       <td>{{$item->release_notes}}</td> 
                                    <td> <a href="{{ route('admin.update.apk', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
-                                      <td> <a href="{{route('admin.Delete.app',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
+                                      <td> <a href="{{route('admin.Delete.apk',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
                                  </tr>  
                               </tbody>   
                        @endforeach

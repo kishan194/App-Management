@@ -78,6 +78,8 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
 
           Route::get('/updateApk/{id}',[ApkUploadController::class,'updateapk'])->name('update.apk');
           Route::put('editApk/{id}',[ApkUploadController::class,'editApk'])->name('apk.edit');
+
+          Route::get('DeleteApk/{id}',[ApkUploadController::class,'DeleteApk'])->name('Delete.apk');
           
 
       });
