@@ -23,9 +23,7 @@ input[type="file"] {
     margin-top: 2px;
 }
 
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
+
 .text-danger {
     color: red;
     margin-top: 5px;

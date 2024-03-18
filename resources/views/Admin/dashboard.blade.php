@@ -5,11 +5,5 @@
             {{ __('Dashboard') }}  {{Auth::guard('admin')->user()->name}}
         </h2>
     </x-slot>
-     {{-- <a class="btn btn-info" href="{{route('admin.App.create')}}">ADD APP</a>
-
-     <a class="btn btn-info" href="{{route('admin.App.index')}}">Manage APP</a>
-
-     <a class="btn btn-info" href="{{route('admin.apk.create')}}">Upload Apk</a>
-
-     <a class="btn btn-info" href="{{route('admin.apk.Index')}}">Manage Apk</a> --}}
+                 <h1>App Management</h1>
 </x-admin-layout>

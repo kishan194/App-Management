@@ -12,6 +12,9 @@
 
     <div class="collapse navbar-collapse"  id="navbarNav">
       <ul class="navbar-nav ml-auto" >
+       <li class="nav-item">
+          <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.dashboard') }}">Home</a>
+        </li>
         <li class="nav-item">
           <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.App.create') }}">ADD APP</a>
         </li>
@@ -24,9 +27,9 @@
         <li class="nav-item">
           <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.apk.Index') }}">Manage Apk</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="btn btn-dark" style="margin-left:5px"  href="{{ route('adminprofile.edit') }}">Profile Update</a>
-        </li>
+        </li> --}}
          <li class="nav-item">
           <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
