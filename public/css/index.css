@@ -51,3 +51,6 @@ table {
     .alert {
         animation: fadeOut 4s forwards;
     }
+    th{
+        text-align: center;
+    }

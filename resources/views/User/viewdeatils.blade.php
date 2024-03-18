@@ -26,7 +26,7 @@
                 @foreach ($apps as $item )
                       
                     
-                            <tbody>
+                            <tbody style="text-align:center">
                                  <tr>
                                       <td>{{$item->name}}</td> 
                                       <td>{{$item->description}}</td> 

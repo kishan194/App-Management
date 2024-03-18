@@ -17,7 +17,8 @@
           <div class="alert alert-success" role="alert">
           <strong>{{$message}}</strong>
           </div>
-   @endif
+       @endif
+
  <div class="container">
         <h1>Edit App</h1>
             <form method="post" action="{{route('admin.edit.app', $data->id)}}" enctype="multipart/form-data">
@@ -40,11 +41,6 @@
                 @enderror
                  </div>
            
-
-
-
-
-
             <div class="form-group">
                 <label for="logo">Logo</label>
                 <input type="file" name="logo" class="form-control-file">

@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for="Apk">ApkUpload</label>
                 <input type="file" name="apk_path" class="form-control-file">
-                 @error('apk_upload')
+                 @error('apk_path')
                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

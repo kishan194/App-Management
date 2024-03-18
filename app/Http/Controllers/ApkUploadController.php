@@ -13,15 +13,16 @@ class ApkUploadController extends Controller
         return view('Admin.Apk-upload.create',compact('apk'));
     }
     public function ApkStore(Request $request){
-        
+        // dd($request->all());
         $request->validate([
             'app_id' => 'required|exists:app_manages,id',
-            'apk_upload' => 'required|mimes:apk|max:64000',
+            'apk_path' => 'required|mimes:zip',
             'version_name' => 'required|string',
             'release_notes' => 'required|string',
         ]);
-        $apk_path = time(). '.' .$request->apk_path->extension();
-        $request->apk_path->move(public_path('apk_path'),$apk_path);      
+        $apk_path= time(). '.' .$request->apk_path->extension();
+        $request->file('apk_path')->store('apk');
+            //$request->apk_path->move(public_path('apk_path'),$apk_path);      
         $apkRelease = new ApkUpload();
         $apkRelease->app_id = $request->app_id;
         $apkRelease->apk_path = $apk_path;
@@ -29,7 +30,7 @@ class ApkUploadController extends Controller
         $apkRelease->release_notes = $request->release_notes;
         // dd($request->all());
         $apkRelease->save();
-        return redirect()->route('admin.apk.create')->with('success', 'APK release created successfully.');
+        return redirect()->route('admin.apk.create')->with('success', 'APK Upload created successfully.');
     }
     public function ApkIndex(){
                $apk = ApkUpload::all();
@@ -67,7 +68,8 @@ public function editapk(Request $request , $id){
 
     if ($request->hasFile('apk_path')) {
         $apk_path = time() . '.' . $request->apk_path->extension();
-        $request->apk_path->move(public_path('apk_path'), $apk_path);
+        $path = $request->file('apk_upload')->storeAs( 'apk','csc'
+        );
     }
     $apk->app_id = $request->app_id;
     $apk->apk_path = $request->apk_path;

@@ -19,7 +19,7 @@
 @endif
 <h1>View Apk</h1>
                <table>
-                   <thead>
+                   <thead >
                        <tr>
                            <th>APP Name</th>
                            <th>Apk</th>
@@ -30,7 +30,7 @@
                          <tr>
                        </thead>
                        @foreach ($apk as $item )
-                            <tbody>
+                            <tbody style="text-align:center">
                                  <tr>
                                      <td>{{$item->app_id}}</td>
                                        <td><a href="{{ route('admin.apk.download', ['filename' => $item->apk_path]) }}">{{ $item->apk_path }}</a></td>

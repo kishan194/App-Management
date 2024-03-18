@@ -9,6 +9,10 @@
 
 @endsection
 
+@section('header')
+       @include('layouts.navigation')
+@endsection
+
 @section('content')
 @if(session('success'))
     <div class="alert alert-success">
@@ -21,7 +25,7 @@
                        <tr>
                            <th>App Name</th>
                            {{-- <th>Description</th>
-                           <th>Logo</th>
+                           <th>Logso</th>
                            <th>Image</th>
                            <th>Package Name</th>
                            <th>Meta Keywords</th>
@@ -32,7 +36,7 @@
                          <tr>
                        </thead>
                        @foreach ($app as $item )
-                            <tbody>
+                            <tbody  style="text-align:center">
                                  <tr>
                                       <td>{{$item->name}}</td> 
                                       {{-- <td>{{$item->description}}</td> 
