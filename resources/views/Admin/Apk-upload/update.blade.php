@@ -6,7 +6,9 @@
 @section('styles')
           <link rel="stylesheet" href="{{asset('css/appmanage.css')}}">
 @endsection
-
+@section('header')
+     @include('Admin.layouts.navigation')
+@endsection
 @section('content')
 <h1>Edit Apk</h1>
  <form method="post" action="{{route('admin.apk.edit', $apkUpload->id)}}" enctype="multipart/form-data">
@@ -25,6 +27,7 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>
+
 
     <div class="form-group">
         <label for="apk_path">Apk Upload</label>

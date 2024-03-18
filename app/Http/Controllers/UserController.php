@@ -17,8 +17,11 @@ class UserController extends Controller
 {
     $apps = AppManage::join('apk_uploads', 'app_manages.id', '=', 'apk_uploads.app_id')
                     ->select('app_manages.id','app_manages.name', 'app_manages.description','app_manages.logo','app_manages.image', 'app_manages.PackageName', 'app_manages.publish_status','apk_uploads.app_id' ,'apk_uploads.apk_path', 'apk_uploads.version_name', 'apk_uploads.release_notes')
+                    ->onlyTrashed()
                     ->get();
 
+
+      //   dd($apps);
     return view('User.viewdeatils', compact('apps'));
 }
 }

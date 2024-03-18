@@ -8,6 +8,9 @@
  <link rel="stylesheet" href="{{asset('css/index.css')}}">
 @endsection
 
+@section('header')
+     @include('Admin.layouts.navigation')
+@endsection
 @section('content')
               @if(session('success'))
     <div class="alert alert-success">

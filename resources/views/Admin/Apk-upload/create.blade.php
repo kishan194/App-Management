@@ -7,7 +7,9 @@
 @section('styles')
           <link rel="stylesheet" href="{{asset('css/appmanage.css')}}">
 @endsection
-
+@section('header')
+     @include('Admin.layouts.navigation')
+@endsection
 
 
 @section('content')

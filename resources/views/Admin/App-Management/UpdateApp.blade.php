@@ -8,6 +8,10 @@
            <link rel="stylesheet" href="{{asset('css/appmanage.css')}}">
 @endsection
 
+@section('header')
+     @include('Admin.layouts.navigation')
+@endsection
+
 @section('content')
              @if ($message = Session::get('success'))
           <div class="alert alert-success" role="alert">

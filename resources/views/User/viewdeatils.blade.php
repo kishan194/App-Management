@@ -24,13 +24,13 @@
                   </tr>
               </thead>
                 @foreach ($apps as $item )
-                       @if ($item->id == $item->app_id)
+                      
                     
                             <tbody>
                                  <tr>
                                       <td>{{$item->name}}</td> 
                                       <td>{{$item->description}}</td> 
-                                       <td><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td>
+                                      <td><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td>
                                       <td><img src="{{ asset('images/' . $item->image) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td> 
                                       <td>{{$item->PackageName}}</td> 
                                       <td>{{$item->publish_status}}</td> 
@@ -39,7 +39,7 @@
                                       <td>{{$item->release_notes}}</td>
                                 </tr>
                         </tbody>
-                       @endif
+                     
                   @endforeach
           </table>        
 

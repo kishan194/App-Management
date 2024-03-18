@@ -16,7 +16,7 @@ class ApkUploadController extends Controller
         
         $request->validate([
             'app_id' => 'required|exists:app_manages,id',
-            'apk_upload' => 'image|mimes:png,jpg',
+            'apk_upload' => 'required|mimes:apk|max:64000',
             'version_name' => 'required|string',
             'release_notes' => 'required|string',
         ]);

@@ -18,7 +18,7 @@
  <div class="container">
         <h1>Add New App</h1>
             <form method="post" action="{{ route('admin.App.Store') }}" enctype="multipart/form-data">
-    @csrfs
+    @csrf
         <label for="name">Name:</label>
         <input type="text" value="{{ old('name') }}" id="name" name="name">
         @error('name')
@@ -73,7 +73,7 @@
                 <div class="text-danger">{{$message}}</div>
         @enderror
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
 </form>
 </div>
 @endsection
