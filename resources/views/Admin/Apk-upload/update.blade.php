@@ -36,7 +36,7 @@
     
     <div class="form-group">
         <label for="version_name">Version Name</label>
-        <input type="text" name="version_name" class="form-control" value="{{ old('version_name', $apkUpload->version_name) }}" required>
+        <input type="text" name="version_name" class="form-control" value="{{ old('version_name', $apkUpload->version_name) }}">
         @error('version_name')
             <div class="text-danger">{{ $message }}</div>
         @enderror

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\ApkUpload;
 
 class AppManage extends Model
 {
@@ -19,8 +20,8 @@ class AppManage extends Model
                  'meta_description',
                  'publish_status'
     ];
-    public function appUpload()
+    public function apkUpload()
     {
-        return $this->hasOne(ApkUpload::class);
+        return $this->hasMany(ApkUpload::class,'apk_path');
     }
 }

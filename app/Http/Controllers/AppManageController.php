@@ -21,8 +21,8 @@ class AppManageController extends Controller
           $request->validate([
           'name' => 'required',
           'description' => 'required',
-          'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-          'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', 
+          'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
+          'image' => 'image|mimes:jpeg,png,jpg|max:2048', 
           'PackageName' => 'required',
           'meta_keywords' => 'nullable',
           'meta_description' => 'nullable',
@@ -44,7 +44,7 @@ class AppManageController extends Controller
              $app->meta_description = $request->meta_description;
              $app->publish_status = $request->publish_status;
              $app->save();
-             return back()->withSuccess('App Added');
+             return redirect()->route('admin.App.index')->withSuccess('Data Added Successful.');    
              
       }
       public function updateapp($id){

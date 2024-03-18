@@ -59,14 +59,14 @@
                  @endif
                   @error('image')
                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+                  @enderror
             </div>
             <div class="form-group">
                 <label for="PackageName">Package Name</label>
                 <input type="text" name="PackageName"  value="{{$data->PackageName}}" class="form-control" required>
                   @error('PackageName')
                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+                  @enderror
             </div>
             <!-- Optional fields -->
             <div class="form-group">

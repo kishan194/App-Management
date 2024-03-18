@@ -5,6 +5,10 @@
 @section('styles')
           <link href="{{asset('css/appmanage.css')}}" rel="stylesheet">
 @endsection
+
+@section('header')
+        @include('Admin.layouts.navigation')
+@endsection
 @section('content')
  @if ($message = Session::get('success'))
           <div class="alert alert-success" role="alert">
@@ -14,7 +18,7 @@
  <div class="container">
         <h1>Add New App</h1>
             <form method="post" action="{{ route('admin.App.Store') }}" enctype="multipart/form-data">
-    @csrf
+    @csrfs
         <label for="name">Name:</label>
         <input type="text" value="{{ old('name') }}" id="name" name="name">
         @error('name')
