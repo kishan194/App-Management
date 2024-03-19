@@ -61,4 +61,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');
 
+    Route::get('app/search',[UserController::class,'viewApp'])->name('search.app');
+
     });

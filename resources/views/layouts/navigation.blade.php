@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse"  id="navbarNav">
       <ul class="navbar-nav ml-auto" >
        <li class="nav-item">
-          <a class="btn btn-dark" style="margin-left:5px" href="{{ route('dashboard') }}">Home</a>
+          <a class="btn btn-dark" style="margin-left:650px" href="{{ route('dashboard') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-dark" style="margin-left:5px" href="{{route('View-App')}}">View-app</a>

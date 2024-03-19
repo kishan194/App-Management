@@ -15,4 +15,6 @@
      @yield('content')
 </body>
 @yield('script')
+
+@yield('paginate')
 </html>

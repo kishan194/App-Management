@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 class AppManageController extends Controller
 {
 
-    public function index(){
-        $app = AppManage::paginate(5);
+  public function index(Request $request)
+  {
+      $searchQuery = $request->input('search');
+
+      if ($searchQuery) {
+          $app = AppManage::where('name', 'LIKE', "%$searchQuery%")
+                           ->paginate(5);
+      } else {
+          $app = AppManage::paginate(5);
+      }
         return view('Admin.App-Management.index',compact('app'));
     }
       Public function create(){

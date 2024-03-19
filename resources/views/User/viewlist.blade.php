@@ -14,43 +14,28 @@
 @endsection
 
 @section('content')
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
 <h1>View-List App</h1>
+
+<form action="{{ route('search.app') }}" method="GET"  class="ml-3">
+    <input  type="text" name="search" class="search"  placeholder="Search by App Name">
+    <button type="submit" class="btn btn-primary" id="btn-search">Search</button>
                <table>
                    <thead>
                        <tr>
                            <th>App Name</th>
-                           {{-- <th>Description</th>
-                           <th>Logso</th>
-                           <th>Image</th>
-                           <th>Package Name</th>
-                           <th>Meta Keywords</th>
-                           <th>Meta Description</th>
-                           <th>Publish_Status</th> --}}
+                          
                            <th>APP Deatils Page</th>
                            
                          <tr>
                        </thead>
-                       @foreach ($app as $item )
-                            <tbody  style="text-align:center">
-                                 <tr>
-                                      <td>{{$item->name}}</td> 
-                                      {{-- <td>{{$item->description}}</td> 
-                                       <td><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td>
-                                      <td><img src="{{ asset('images/' . $item->image) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td> 
-                                      <td>{{$item->PackageName}}</td> 
-                                      <td>{{$item->meta_keywords}}</td> 
-                                      <td>{{$item->meta_description}}</td> 
-                                      <td>{{$item->publish_status}}</td>  --}}
-                                   <td> <a href="{{route('detail.app')}}" class="btn btn-primary">App Details</td>
-                                   
-                                 </tr>  
-                              </tbody>   
-                       @endforeach
+                     @foreach ($app as $item)
+                           <tbody style="text-align:center">
+                                       <tr>
+                                           <td>{{ $item->name }}</td>
+                                          <td><a href="{{ route('detail.app', ['search' => $item->name]) }}" class="btn btn-info">Details App</a></td>
+                                      </tr>
+                               </tbody>
+                            @endforeach
                        </table>
 @endsection
 @section('script')

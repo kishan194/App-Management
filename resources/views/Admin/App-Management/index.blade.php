@@ -25,7 +25,7 @@
     <input  type="text" name="search" class="search"  placeholder="Search by App Name">
     <button type="submit" class="btn btn-info" id="btn-search">Search</button>
     
- <a class="btn btn-dark add-app-link" style="margin-bottom:8px;" href="{{ route('admin.App.create') }}">ADD APP</a>
+ <a class="btn btn-warning add-app-link" style="margin-bottom:8px;" href="{{ route('admin.App.create') }}">ADD APP</a>
 </form>
 
 @endsection
