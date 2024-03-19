@@ -16,12 +16,12 @@ class ApkUploadController extends Controller
         // dd($request->all());
         $request->validate([
             'app_id' => 'required|exists:app_manages,id',
-            'apk_path' => 'required|mimes:zip',
+            'apk_path' => 'required|mimes:apk',
             'version_name' => 'required|string',
             'release_notes' => 'required|string',
         ]);
-        $apk_path= time(). '.' .$request->apk_path->extension();
-        $request->file('apk_path')->store('apk');
+        $apk_path = time() . '.' . $request->apk_path->extension();
+        $request->file('apk_path')->storeAs('apk', $apk_path);
             //$request->apk_path->move(public_path('apk_path'),$apk_path);      
         $apkRelease = new ApkUpload();
         $apkRelease->app_id = $request->app_id;
@@ -51,10 +51,10 @@ class ApkUploadController extends Controller
 public function download($filename)
 {
     
-    $filePath = public_path("apk_path/{$filename}");
+    $filePath = storage_path("app/apk/{$filename}");
 
     if (!file_exists($filePath)) {
-        abort(404);
+        dd($filename);
     }
     return response()->download($filePath);
 }
@@ -66,25 +66,25 @@ public function updateapk($id){
 }
 public function editapk(Request $request , $id){
     $apk = ApkUpload::find($id);
-      
+    
     $request->validate([
         'app_id' => 'required|exists:app_manages,id',
-        'apk_upload' => 'required|mimes:apk',
+        'apk_path' => 'required|mimes:zip',
         'version_name' => 'required|string',
         'release_notes' => 'required|string',
     ]);
-
-
+   
+     
     if ($request->hasFile('apk_path')) {
         $apk_path = time() . '.' . $request->apk_path->extension();
-        $path = $request->file('apk_upload')->storeAs( 'apk','csc'
-        );
+        $request->file('apk_path')->storeAs('apk', $apk_path);
     }
     $apk->app_id = $request->app_id;
     $apk->apk_path = $request->apk_path;
     $apk->apk_path= $apk_path;
     $apk->version_name = $request->version_name;
     $apk->release_notes = $request->release_notes;
+   
     $apk->save();
     return redirect()->route('admin.apk.Index')->withSuccess('Data Update Successful.');    
     }
