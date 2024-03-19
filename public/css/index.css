@@ -54,3 +54,20 @@ table {
     th{
         text-align: center;
     }
+
+    .search {
+        width: 200px; 
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px; 
+        margin-bottom: 5px;
+    }
+    #btn-search{
+        width:fit-content; 
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px; 
+        margin-bottom: 5px;
+    }

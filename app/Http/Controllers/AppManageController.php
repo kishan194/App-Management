@@ -9,7 +9,7 @@ class AppManageController extends Controller
 {
 
     public function index(){
-        $app = AppManage::all();
+        $app = AppManage::paginate(5);
         return view('Admin.App-Management.index',compact('app'));
     }
       Public function create(){

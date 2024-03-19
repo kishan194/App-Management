@@ -13,10 +13,7 @@
     <div class="collapse navbar-collapse"  id="navbarNav">
       <ul class="navbar-nav ml-auto" >
        <li class="nav-item">
-          <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.dashboard') }}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.App.create') }}">ADD APP</a>
+          <a class="btn btn-dark" style="margin-left:600px" href="{{ route('admin.dashboard') }}">Home</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-dark" style="margin-left:5px" href="{{ route('admin.App.index') }}">Manage APP</a>

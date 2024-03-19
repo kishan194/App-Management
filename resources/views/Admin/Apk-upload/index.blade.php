@@ -11,13 +11,22 @@
 @section('header')
      @include('Admin.layouts.navigation')
 @endsection
+
+@section('search')
+<h1>View Apk</h1>
+
+      <form action="{{ route('admin.search.apk') }}" method="GET"  class="ml-3">
+    <input  type="text" name="search" class="search"  placeholder="Search by App Name">
+    <button type="submit" class="btn btn-info" id="btn-search">Search</button>
+</form>
+@endsection
 @section('content')
               @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
-<h1>View Apk</h1>
+
                <table>
                    <thead >
                        <tr>
@@ -32,7 +41,7 @@
                        @foreach ($apk as $item )
                             <tbody style="text-align:center">
                                  <tr>
-                                     <td>{{$item->app_id}}</td>
+                                     <td>{{ $appName[$item->app_id] }}</td>
                                        <td><a href="{{ route('admin.apk.download', ['filename' => $item->apk_path]) }}">{{ $item->apk_path }}</a></td>
                                       <td>{{$item->version_name}}</td> 
                                       <td>{{$item->release_notes}}</td> 
@@ -49,4 +58,9 @@
         document.getElementById('successMessage').style.display = 'none';
     }, 4000); 
 </script>
-@endsection          
+@endsection         
+
+@section('paginate')
+           {{ $apk->links() }}
+          
+@endsection

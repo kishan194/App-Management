@@ -10,8 +10,11 @@
 <header>
    @yield('header')
 </header>
+@yield('search')
 <body>
      @yield('content')
 </body>
 @yield('script')
+
+@yield('paginate')
 </html>

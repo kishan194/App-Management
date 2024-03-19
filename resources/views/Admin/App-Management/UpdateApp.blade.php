@@ -21,7 +21,7 @@
 
  <div class="container">
         <h1>Edit App</h1>
-            <form method="post" action="{{route('admin.edit.app', $data->id)}}" enctype="multipart/form-data">
+            <form method="post"  action="{{route('admin.edit.app', $data->id)}}" enctype="multipart/form-data">
     @csrf
      @method('PUT')
     <div class="form-group">
@@ -85,23 +85,20 @@
             </div>
            
            <div class="form-group">
-                                <label for="publish_status">Publish Status</label>
-                                <div class="form-check">
-                                    <input type="radio" name="publish_status" value="published" {{ $data->publish_status == 'published' ? 'checked' : '' }} class="form-check-input" id="publish">
-                                    <label class="form-check-label" for="publish">Publish</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="radio" name="publish_status" value="unpublished" {{ $data->publish_status == 'unpublished' ? 'checked' : '' }} class="form-check-input" id="unpublish">
-                                    <label class="form-check-label" for="unpublish">Unpublish</label>
-                                </div>
+                                <label for="publish_status">Publish Status:</label>
+        <select id="publish_status" name="publish_status">Select One
+            <option value="published">Published</option>
+            <option value="unpublished">Unpublished</option>
+        </select>
                             </div>
                            @error('publish_status')
                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                </div>
                </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-group" style="text-align:center">
+             <button type="submit" style="display: inline-block;" class="btn btn-primary">Submit</button>
+             <div>
 </form>
 </div>
 @endsection

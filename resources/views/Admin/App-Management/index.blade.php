@@ -12,6 +12,23 @@
 @section('header')
      @include('Admin.layouts.navigation')
 @endsection
+@section('search')
+<style>
+.add-app-link {
+    position: fixed;
+    right: 20px; 
+    z-index: 999;
+    }
+</style>
+<h1>View App</h1>
+  <form action="{{ route('admin.search.app') }}" method="GET"  class="ml-3">
+    <input  type="text" name="search" class="search"  placeholder="Search by App Name">
+    <button type="submit" class="btn btn-info" id="btn-search">Search</button>
+    
+ <a class="btn btn-dark add-app-link" style="margin-bottom:8px;" href="{{ route('admin.App.create') }}">ADD APP</a>
+</form>
+
+@endsection
 @section('content')
 @if(session('success'))
     <div class="alert alert-success">
@@ -19,8 +36,6 @@
     </div>
 @endif
 
-
-<h1>View All App</h1>
                <table>
                    <thead>
                        <tr>
@@ -32,12 +47,13 @@
                            <th>Meta Keywords</th>
                            <th>Meta Description</th>
                            <th>Publish_Status</th>
+                           <th>Add Apk</th>
                            <th>Edit</th>
                            <th>Delete</th>
                          <tr>
                        </thead>
                        @foreach ($app as $item )
-                            <tbody>
+                            <tbody style="text-align:center">
                                  <tr>
                                       <td>{{$item->name}}</td> 
                                       <td>{{$item->description}}</td> 
@@ -47,6 +63,7 @@
                                       <td>{{$item->meta_keywords}}</td> 
                                       <td>{{$item->meta_description}}</td> 
                                       <td>{{$item->publish_status}}</td> 
+                                      <td> <a href="{{route('admin.apk.create')}}" class="btn btn-dark">Add-Apk</a></td>
                                    <td> <a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
                                       <td> <a href="{{route('admin.Delete.app',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
                                  </tr>  
@@ -60,4 +77,7 @@
         document.getElementById('successMessage').style.display = 'none';
     }, 4000); 
 </script>
+@endsection
+@section('paginate')
+    {{ $app->links() }}
 @endsection

@@ -30,11 +30,20 @@ class ApkUploadController extends Controller
         $apkRelease->release_notes = $request->release_notes;
         // dd($request->all());
         $apkRelease->save();
-        return redirect()->route('admin.apk.create')->with('success', 'APK Upload created successfully.');
+        return redirect()->route('admin.apk.Index')->withSuccess('Apk Upload SuccessFull...');    
     }
-    public function ApkIndex(){
-               $apk = ApkUpload::all();
-               return view('Admin.Apk-upload.index',compact('apk'));
+    public function ApkIndex(Request $request){
+        $appName = AppManage::pluck('name', 'id');
+        $searchQuery = $request->input('search');
+    
+        if ($searchQuery) {
+            $apk = ApkUpload::whereHas('appManage', function ($query) use ($searchQuery) {
+                $query->where('name', 'LIKE', '%' . $searchQuery . '%');
+            })->paginate(5); 
+        } else {
+            $apk = ApkUpload::paginate(5);
+        }
+               return view('Admin.Apk-upload.index',compact('apk','appName'));
 
     }
 

@@ -68,7 +68,7 @@
         <select id="publish_status" name="publish_status">Select One
             <option value="published">Published</option>
             <option value="unpublished">Unpublished</option>
-        </select><br>
+        </select>
          @error('publish_status')
                 <div class="text-danger">{{$message}}</div>
         @enderror

@@ -67,6 +67,8 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           //delete app route
           Route::get('deleteApp/{id}',[AppManageController::class,'DeleteApp'])->name('Delete.app');
 
+          Route::get('app/search',[AppManageController::class,'index'])->name('search.app');
+
 
           //Apk Upload
           Route::get('apkCreate',[ApkUploadController::class,'create'])->name('apk.create');
@@ -80,6 +82,9 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::put('editApk/{id}',[ApkUploadController::class,'editApk'])->name('apk.edit');
 
           Route::get('DeleteApk/{id}',[ApkUploadController::class,'DeleteApk'])->name('Delete.apk');
+
+          Route::get('/admin/apk/search',[ApkUploadController::class,'ApkIndex'])->name('search.apk');
+
           
 
       });
