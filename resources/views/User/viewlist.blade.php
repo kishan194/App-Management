@@ -32,8 +32,8 @@
                            <tbody style="text-align:center">
                                        <tr>
                                            <td>{{ $item->name }}</td>
-                                          <td><a href="{{ route('detail.app', ['search' => $item->name]) }}" class="btn btn-info">Details App</a></td>
-                                      </tr>
+                                           <td><a href="{{ route('detail.app', ['search' => $item->name]) }}" class="btn btn-info">Details App</a></td>
+                                       </tr>
                                </tbody>
                             @endforeach
                        </table>

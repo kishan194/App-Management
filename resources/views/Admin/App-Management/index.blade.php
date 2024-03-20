@@ -13,13 +13,6 @@
      @include('Admin.layouts.navigation')
 @endsection
 @section('search')
-<style>
-.add-app-link {
-    position: fixed;
-    right: 20px; 
-    z-index: 999;
-    }
-</style>
 <h1>View App</h1>
   <form action="{{ route('admin.search.app') }}" method="GET"  class="ml-3">
     <input  type="text" name="search" class="search"  placeholder="Search by App Name">
@@ -57,14 +50,14 @@
                                  <tr>
                                       <td>{{$item->name}}</td> 
                                       <td>{{$item->description}}</td> 
-                                       <td><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td>
+                                      <td><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td>
                                       <td><img src="{{ asset('images/' . $item->image) }}" class="rounded-circle" width="50" height="50" alt="Example Image"></td> 
                                       <td>{{$item->PackageName}}</td> 
                                       <td>{{$item->meta_keywords}}</td> 
                                       <td>{{$item->meta_description}}</td> 
                                       <td>{{$item->publish_status}}</td> 
-                                      <td> <a href="{{route('admin.apk.create')}}" class="btn btn-dark">Add-Apk</a></td>
-                                   <td> <a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
+                                      <td><a href="{{ route('admin.single.apk', ['search' => $item->name]) }}" class="btn btn-secondary">View-Apk</a></td>
+                                      <td><a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
                                       <td> <a href="{{route('admin.Delete.app',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
                                  </tr>  
                               </tbody>   
@@ -79,5 +72,5 @@
 </script>
 @endsection
 @section('paginate')
-    {{ $app->links() }}
+    <div class="paginate">{{ $app->links() }}</div>
 @endsection

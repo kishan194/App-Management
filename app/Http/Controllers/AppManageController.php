@@ -66,8 +66,8 @@ class AppManageController extends Controller
         $request->validate([
           'name' => 'required',
           'description' => 'required',
-          'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-          'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', 
+          'logo' => 'image|mimes:jpeg,png,jpg|max:2048',
+          'image' => 'image|mimes:jpeg,png,jpg|max:2048', 
           'PackageName' => 'required',
           'meta_keywords' => 'nullable',
           'meta_description' => 'nullable',
