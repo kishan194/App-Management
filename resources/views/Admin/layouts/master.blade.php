@@ -10,6 +10,7 @@
 <header>
    @yield('header')
 </header>
+@yield('filter')
 @yield('search')
 <body>
      @yield('content')

@@ -87,6 +87,9 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
 
           Route::get('/singleApk',[ApkUploadController::class,'singleApk'])->name('single.apk');
 
+          Route::get('filter', [ApkUploadController::class,'ApkIndex'])->name('filter.apk');
+
+
           
 
       });

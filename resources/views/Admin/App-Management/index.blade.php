@@ -40,7 +40,7 @@
                            <th>Meta Keywords</th>
                            <th>Meta Description</th>
                            <th>Publish_Status</th>
-                           <th>Add Apk</th>
+                           <th>View Apk</th>
                            <th>Edit</th>
                            <th>Delete</th>
                          <tr>

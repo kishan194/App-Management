@@ -35,17 +35,20 @@ class ApkUploadController extends Controller
         return redirect()->route('admin.apk.Index')->withSuccess('Apk Upload SuccessFull...');    
     }
     public function ApkIndex(Request $request){
-        $appName = AppManage::pluck('name', 'id');
-        $searchQuery = $request->input('search');
-    
-        if ($searchQuery) {
-            $apk = ApkUpload::whereHas('appManage', function ($query) use ($searchQuery) {
-                $query->where('name', 'LIKE', '%' . $searchQuery . '%');
-            })->paginate(5); 
-        } else {
-            $apk = ApkUpload::paginate(5);
-        }
-               return view('Admin.Apk-upload.index',compact('apk','appName'));
+    $appId = $request->input('filter');
+    $searchQuery = $request->input('search');
+    $apkQuery = ApkUpload::query()->with('appManage');
+    if ($appId) {
+        $apkQuery->where('app_id', $appId);
+    }
+    if ($searchQuery) {
+        $apkQuery->whereHas('appManage', function ($query) use ($searchQuery) {
+            $query->where('name', 'LIKE', '%' . $searchQuery . '%');
+        });
+    }
+    $filteredApks = $apkQuery->paginate(5);
+    $appNames = AppManage::pluck('name', 'id');
+    return view('Admin.Apk-upload.index', compact('filteredApks', 'appNames'));
 
     }
 
@@ -56,7 +59,7 @@ public function download($filename)
     $filePath = storage_path("app/apk/{$filename}");
 
     if (!file_exists($filePath)) {
-        dd($filename);
+           abort(404);
     }
     return response()->download($filePath);
 }
@@ -117,13 +120,31 @@ public function editapk(Request $request, $id)
         if ($searchQuery) {
             $apk = ApkUpload::whereHas('appManage', function ($query) use ($searchQuery) {
                 $query->where('name', 'LIKE', '%' . $searchQuery . '%');
-            })->paginate(5); 
+            })->paginate(5);
+           
+
         } else {
             $apk = ApkUpload::paginate(5);
         }
                return view('Admin.Apk-upload.single',compact('apk','appName'));
 
     }
-      }
+        public function filterApk(Request $request)
+         {
+        $appId = $request->input('filter');
+        $searchQuery = $request->input('search');
+        $apkQuery = ApkUpload::query()->with('appManage');
+        if ($appId) {
+            $apkQuery->where('app_id', $appId);
+        }
+        if ($searchQuery) {
+            $apkQuery->where('name', 'LIKE', '%' . $searchQuery . '%');
+        }
+        $filteredApks = $apkQuery->paginate(5);
+        $appNames = AppManage::pluck('name', 'id');
+        return view('Admin.Apk-upload.index', compact('filteredApks', 'appNames'));
+        }
+     }
     
 
+  
