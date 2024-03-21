@@ -12,8 +12,10 @@
 </header>
 @yield('filter')
 @yield('search')
+@yield('sidebar')
 <body>
      @yield('content')
+     
 </body>
 @yield('script')
 
