@@ -62,3 +62,6 @@
 </form>
 </div>
 @endsection
+@section('footer')
+   @include('Admin.layouts.footer')
+@endsection

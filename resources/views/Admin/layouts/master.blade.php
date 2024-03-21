@@ -18,4 +18,6 @@
 @yield('script')
 
 @yield('paginate')
+
+@yield('footer')
 </html>

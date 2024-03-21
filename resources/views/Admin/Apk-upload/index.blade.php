@@ -16,30 +16,35 @@
 @section('search')
 <h1>View Apk</h1>
 <style>
-  .search{
+.search {
     position: fixed;
-    right: 20px; 
-     margin-right: 200px; 
-     margin-top:50px;
-    z-index: 999;   
-  }
-  #btn-search{
-     position: fixed;
-     right: 20px; 
-     margin-right: 135px; 
-     margin-top:50px;
-     z-index: 999;   
-  }
-  
+    right: 20px;
+    margin-right: 200px;
+    z-index: 999;
+}
+
+#btn-search {
+    position: fixed;
+    right: 50px;
+    margin-top:3px;
+    margin-right: 95px;
+    width: 70px;
+}
+
+.btnf {
+    margin-left:265px;
+    margin-top:3px;
+}
+
+#filter {
+    margin-bottom: -40px;
+}
+
 </style>
 <form action="{{ route('admin.search.apk') }}" method="GET"  class="ml-3">
     <input  type="text" name="search" class="search"  placeholder="Search by Apk Name">
     <button type="submit" class="btn btn-info" id="btn-search">Search</button>
 </form>
-@endsection
-
-
-@section('content')
 
        <div class="container">
                 <form action="{{ route('admin.filter.apk') }}" method="GET" class="form-inline mb-3">
@@ -48,19 +53,26 @@
                    <option class="ofilter" value="name">Filter by App Name</option>
                         @foreach ($appNames as $appId => $appName)
                          <option value="{{ $appId }}" @if(request('filter') == $appId) selected @endif>{{ $appName }}</option>
-                        @endforeach
-                        
+                        @endforeach    
              </select>
+             <div class="btnf">
              <button type="submit"id="btnfilter" class="btn btn-primary">Filter</button>
+             </div>
         </div>
           
 </form>
+@endsection
+
+
+@section('content')
+
+
         
         <table class="table">
             <thead>
                 <tr>
                     <th>App Name</th>
-                    <th>APK Path</th>
+                    <th>APK Download</th>
                     <th>Version Name</th>
                     <th>Release Notes</th>
                     <th>Edit</th>
@@ -92,6 +104,10 @@
         document.getElementById('successMessage').style.display = 'none';
     }, 4000); 
 </script>
-@endsection         
+@endsection 
+
+@section('footer')
+   @include('Admin.layouts.footer')
+@endsection
 
 

@@ -25,80 +25,82 @@
     @csrf
      @method('PUT')
     <div class="form-group">
-                <label for="name">App Name</label>
-                <input type="text"  class="form-control"  name="name" value="{{$data->name}}">
-             @error('name')
-                <div class="text-danger">{{$message}}</div>
-        @enderror
-         </div>
-
-            
+                <label for="Name">Name:</label>
+                <input type="text" class="form-control" placeholder="Name" name="name" value="{{$data->name}}">
+                @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+     
              <div class="form-group">
-                <label for="description">Description</label>
-                <textarea  class="form-control" name="description" rows="4" >{{ old('description', $data->description) }}</textarea>
+                <label for="Description">Description:</label>
+                <textarea class="form-control" placeholder="Description" name="description">{{ old('description', $data->description) }}</textarea>
                 @error('description')
-                   <div class="text-danger">{{ $message }}</div>
-                @enderror
-                 </div>
-           
-            <div class="form-group">
-                <label for="logo">Logo</label>
-                <input type="file" name="logo" class="form-control-file">
-                @if($data->logo)
-                 <img src="{{ asset('logo/' . $data->logo) }}" width="100" alt="Current Logo">
-                 @endif
-                 @error('logo')
-                   <div class="text-danger">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="image">Preview Image</label>
-                <input type="file" name="image" class="form-control-file">
-                 @if($data->image)
-                      <img src="{{ asset('images/' . $data->image) }}" width="100" alt="Current Image">
-                 @endif
-                  @error('image')
-                   <div class="text-danger">{{ $message }}</div>
-                  @enderror
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="logo">Logo:</label>
+                        <input type="file" class="form-control-file border" id="logo" name="logo">
+                         @if($data->logo)
+                             <img src="{{ asset('logo/' . $data->logo) }}" width="100" alt="Current Logo">
+                         @endif
+                        @error('logo')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control-file border" id="image" name="image">
+                        @if($data->image)
+                            <img src="{{ asset('images/' . $data->image) }}" width="100" alt="Current Image">
+                        @endif
+                        @error('image')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
-                <label for="PackageName">Package Name</label>
-                <input type="text" name="PackageName"  value="{{$data->PackageName}}" class="form-control" required>
-                  @error('PackageName')
-                   <div class="text-danger">{{ $message }}</div>
-                  @enderror
+                <label for="PackAge">Package Name:</label>
+                <input type="text" class="form-control border" placeholder="Package Name" name="PackageName"  value="{{$data->PackageName}}">
+                @error('PackageName')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
-            <!-- Optional fields -->
-            <div class="form-group">
-                <label for="meta_keywords">Meta Keywords</label>
-                <input type="text" name="meta_keywords" value="{{$data->meta_keywords}}"   class="form-control">
-                 @error('meta_keywords')
-                   <div class="text-danger">{{ $message }}</div>
+             <div class="form-group">
+                <label for="meta_keywords">Meta Keywords:</label>
+                <input type="text" class="form-control border" placeholder="Meta Keywords" name="meta_keywords" value="{{$data->meta_keywords}}">
+                @error('meta_keywords')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+             <div class="form-group">
+                <label for="meta_description">Meta Description:</label>
+                <textarea class="form-control border" placeholder="Meta Description" name="meta_description">{{ old('description', $data->meta_description) }}</textarea>
+                @error('meta_description')
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="form-group">
-                <label for="meta_description">Meta Description</label>
-                <textarea name="meta_description" class="form-control"   rows="4">{{ old('description', $data->meta_description) }}</textarea>
-                  @error('meta_description')
-                   <div class="text-danger">{{ $message }}</div>
-                  @enderror
+                <label for="publish_status">Publish Status:</label>
+                <select class="form-control border" name="publish_status">
+                    <option value="published">Published</option>
+                    <option value="unpublished">Unpublished</option>
+                </select>
+                @error('publish_status')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
-           
-           <div class="form-group">
-                                <label for="publish_status">Publish Status:</label>
-        <select id="publish_status" name="publish_status">Select One
-            <option value="published">Published</option>
-            <option value="unpublished">Unpublished</option>
-        </select>
-                            </div>
-                           @error('publish_status')
-                               <div class="text-danger">{{ $message }}</div>
-                            @enderror
-               </div>
-               </div>
-              <div class="form-group" style="text-align:center">
-             <button type="submit" style="display: inline-block;" class="btn btn-primary">Submit</button>
-             <div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>
 @endsection

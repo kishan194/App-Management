@@ -113,22 +113,19 @@ public function editapk(Request $request, $id)
         return redirect()->route('admin.apk.Index')->withSuccess('Data Delete Successful.');    
       }
 
-      public function singleApk(Request $request){
+      public function singleApk(Request $request, $id)
+      {
         $appName = AppManage::pluck('name', 'id');
         $searchQuery = $request->input('search');
     
         if ($searchQuery) {
-            $apk = ApkUpload::whereHas('appManage', function ($query) use ($searchQuery) {
-                $query->where('name', 'LIKE', '%' . $searchQuery . '%');
-            })->paginate(5);
-           
-
+            $apk = ApkUpload::where('app_id', $id)->paginate(5);
         } else {
-            $apk = ApkUpload::paginate(5);
+            $apk = ApkUpload::where('app_id', $id)->paginate(5);
         }
-               return view('Admin.Apk-upload.single',compact('apk','appName'));
-
-    }
+        
+        return view('Admin.Apk-upload.single', compact('apk', 'appName'));
+      }
         public function filterApk(Request $request)
          {
         $appId = $request->input('filter');

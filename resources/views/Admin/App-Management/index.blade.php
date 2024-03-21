@@ -56,7 +56,7 @@
                                       <td>{{$item->meta_keywords}}</td> 
                                       <td>{{$item->meta_description}}</td> 
                                       <td>{{$item->publish_status}}</td> 
-                                      <td><a href="{{ route('admin.single.apk', ['search' => $item->name]) }}" class="btn btn-secondary">View-Apk</a></td>
+                                       <td><a href="{{ route('admin.single.apk', ['id' => $item->id]) }}" class="btn btn-secondary">View-Apk</a></td>
                                       <td><a href="{{ route('admin.update.app', ['id' => $item->id]) }}" class="btn btn-primary">Edit</a></td>
                                       <td> <a href="{{route('admin.Delete.app',['id' => $item->id])}}" class="btn btn-danger">Delete</td>
                                  </tr>  
@@ -73,4 +73,8 @@
 @endsection
 @section('paginate')
     <div class="paginate">{{ $app->links() }}</div>
+@endsection
+
+@section('footer')
+  @include('Admin.layouts.footer')
 @endsection
