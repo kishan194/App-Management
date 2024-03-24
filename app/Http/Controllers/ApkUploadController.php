@@ -18,7 +18,7 @@ class ApkUploadController extends Controller
         // dd($request->all());
         $request->validate([
             'app_id' => 'required|exists:app_manages,id',
-            'apk_path' => 'required|mimes:apk',
+            'apk_path' => 'required|mimes:zip',
             'version_name' => 'required|string',
             'release_notes' => 'required|string',
         ]);

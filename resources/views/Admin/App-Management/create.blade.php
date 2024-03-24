@@ -133,7 +133,9 @@
                 @enderror
                   </div>
                 </div>
-                <button type="submit" class="btn btn-info">Submit</button>
+                   <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-info" style="width: 100px; text-align:center;">Submit</button>
+                </div>
             </div>
 
  @endsection
