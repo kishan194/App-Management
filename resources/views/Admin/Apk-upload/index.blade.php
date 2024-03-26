@@ -70,7 +70,7 @@
 
         </style>
         <form action="{{ route('admin.filter.apk') }}" method="GET" class="form-inline mb-3">
-                        <select id="filter" name="filter" class="form-control">
+                        <select id="filter" style="margin-left:5px"  name="filter" class="form-control">
                                 <option  value="name">Filter by App Name</option>
                                     @foreach ($appNames as $appId => $appName)
                                 <option class="ofilter"  value="{{ $appId }}" @if(request('filter') == $appId) selected @endif>{{ $appName }}</option>
@@ -143,4 +143,8 @@
         document.getElementById('success-message').style.display = 'none';
     }, 4000);
 </script>
+@endsection
+
+@section('footer')
+   @include('Admin.layouts.footer')
 @endsection

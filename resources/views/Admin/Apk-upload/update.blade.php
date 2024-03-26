@@ -51,8 +51,8 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">App Name:</label>
-                      <select class="form-control" id="app_id" name="app_id">
+                    <label for="example-text-input" style="margin-left:10px"  class="form-control-label">App Name:</label>
+                      <select class="form-control" style="margin-left:5px"  id="app_id" name="app_id">
                              <option value="">Select App</option>
                                   @foreach($appManage as $appId => $appName)
                                     <option value="{{ $appId }}" @if($apkUpload->app_id == $appId) selected @endif>{{ $appName }}</option>
@@ -83,8 +83,8 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Version Name:</label>
-                    <input class="form-control" type="text" name="version_name"  value="{{ old('version_name', $apkUpload->version_name) }}">
+                    <label for="example-text-input" style="margin-left:10px"  class="form-control-label">Version Name:</label>
+                    <input class="form-control" style="margin-left:5px"  type="text" name="version_name"  value="{{ old('version_name', $apkUpload->version_name) }}">
                  @error('version_name')
                    <div class="text-danger">{{ $message }}</div>
                   @enderror
@@ -107,3 +107,6 @@
             </div>
 
  @endsection
+ @section('footer')
+   @include('Admin.layouts.footer')
+@endsection

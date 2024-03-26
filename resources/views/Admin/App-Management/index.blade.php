@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@section('title')
+     Manage App
+@endsection
+
 @section('styles')
   
 
@@ -27,9 +31,13 @@
       @include('Admin.layouts.sidebar')
 @endsection
 
+ 
+ @section('header')
+      @include('Admin.layouts.navigation')
+ @endsection
+
 
 @section('content')
-     
 <body class="g-sidenav-show   bg-gray-100">
   <main class="main-content position-relative border-radius-lg ">
     <div class="container-fluid py-4">
@@ -48,13 +56,13 @@
     <div>
         <form action="{{ route('admin.search.app') }}" method="GET" class="mr-2">
             <div class="input-group">
-                <input type="text" name="search" class="form-control"  style="width: 300px; height:40px ;margin-right:5px;" placeholder="Search by App Name">
+                <input type="text" name="search" class="form-control"  style="width: 300px; height:40px ;margin-right:5px; margin-left:5px" placeholder="Search by App Name">
                 <button type="submit" class="btn btn-info">Search</button>
             </div>
         </form>
     </div>
     <div>
-        <a href="{{ route('admin.App.create') }}" class="btn btn-warning">Add App</a>
+        <a href="{{ route('admin.App.create') }}" class="btn btn-warning" style="margin-right:5px">Add App</a>
     </div>
 </div>
         <div class="card-body px-0 pt-0 pb-2">
@@ -111,7 +119,10 @@
 @section('paginate')
     <div class="paginate">{{ $app->links() }}</div>
 @endsection
-   
+    
+   @section('footer')
+       @include('Admin.layouts.footer')
+   @endsection
 </body>
 
 </html>

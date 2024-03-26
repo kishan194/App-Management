@@ -11,10 +11,14 @@
    @yield('header')
 </header>
 
+@yield('sidebar')
 <body>
+    
      @yield('content')
 </body>
 @yield('script')
 
 @yield('paginate')
+
+@yield('footer')
 </html>

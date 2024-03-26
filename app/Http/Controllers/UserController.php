@@ -38,5 +38,16 @@ class UserController extends Controller
       
     return view('User.viewdeatils', compact('apps'));
     }
+
+    public function download($filename)
+    {
+    
+    $filePath = storage_path("app/apk/{$filename}");
+
+    if (!file_exists($filePath)) {
+           abort(404);
+    }
+    return response()->download($filePath);
+    }
 }
 

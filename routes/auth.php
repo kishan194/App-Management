@@ -63,4 +63,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('app/search',[UserController::class,'viewApp'])->name('search.app');
 
+    Route::get('apkDownload/{filename}',[UserController::class,'download'])->name('apk.download');
+
     });

@@ -1,6 +1,6 @@
 @extends('Admin.layouts.master')
 @section('title')
-      Admin DashBoard
+     ADD APP
 @endsection
 
 @section('styles')
@@ -25,7 +25,7 @@
 @endsection
  
  @section('header')
-     
+      @include('Admin.layouts.navigation')
  @endsection
 
  @section('sidebar')
@@ -33,6 +33,7 @@
  @endsection
 
  @section('content')
+
 <body class="g-sidenav-show   bg-gray-100">
   <main class="main-content position-relative border-radius-lg ">
     <div class="container-fluid py-4">
@@ -49,8 +50,8 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">App Name:</label>
-                    <input class="form-control" type="text" placeholder="Name" name="name" value="{{ old('name') }}">
+                    <label for="example-text-input" style="margin-left:10px" class="form-control-label">App Name:</label>
+                    <input class="form-control" style="margin-left:5px" type="text" placeholder="Name" name="name" value="{{ old('name') }}">
                       @error('name')
                           <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -60,8 +61,8 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Description:</label>
-                    <textarea class="form-control" placeholder="Description" name="description">{{ old('description') }}</textarea>
+                    <label for="example-text-input"  class="form-control-label">Description:</label>
+                    <textarea class="form-control"    placeholder="Description" name="description">{{ old('description') }}</textarea>
                       @error('description')
                     <div class="text-danger">{{ $message }}</div>
                      @enderror
@@ -70,8 +71,8 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input"  class="form-control-label">Logo:</label>
-                    <input class="form-control"  id="logo" name="logo" type="file">
+                    <label for="example-text-input" style="margin-left:10px"  class="form-control-label">Logo:</label>
+                    <input class="form-control" style="margin-left:5px" id="logo" name="logo" type="file">
                       @error('logo')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -92,8 +93,8 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Package Name:</label>
-                    <input type="text" class="form-control border" placeholder="Package Name" name="PackageName" value="{{ old('PackageName') }}">
+                    <label for="example-text-input" style="margin-left:10px" class="form-control-label">Package Name:</label>
+                    <input type="text" class="form-control border" style="margin-left:5px" placeholder="Package Name" name="PackageName" value="{{ old('PackageName') }}">
                       @error('PackageName')
                     <div class="text-danger">{{ $message }}</div>
                       @enderror
@@ -112,8 +113,8 @@
 
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Meta Description:</label>
-                   <textarea class="form-control border" placeholder="Meta Description" name="meta_description">{{ old('meta_description') }}</textarea>
+                    <label for="example-text-input" style="margin-left:10px" class="form-control-label">Meta Description:</label>
+                   <textarea class="form-control border" style="margin-left:5px" placeholder="Meta Description" name="meta_description">{{ old('meta_description') }}</textarea>
                      @error('meta_description')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -139,4 +140,7 @@
             </div>
 
  @endsection
+ @section('footer')
+   @include('Admin.layouts.footer')
+@endsection
 

@@ -11,6 +11,10 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    margin-left:-23px;
+}
+span{
+       margin-right:20%;
 }
 </style> 
  <footer class="footer bg-dark text-white text-center py-3">
