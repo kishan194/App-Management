@@ -52,7 +52,7 @@
                              <div class="row">
 
                                  <div class="col-lg-6">
-                                     <form action="{{ route('admin.filter.apk') }}" method="GET" class="mb-3">
+                                     <form action="{{ route('admin.filter.apk') }}" method="GET">
                                          <div class="input-group align-items-center px-4">
                                              <select id="filter" name="filter" class="form-select">
                                                  <option value="name">Filter by App Name</option>
@@ -104,6 +104,9 @@
                                                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                      Release Notes</th>
                                                  <th
+                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                     Create Date</th>
+                                                 <th
                                                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                      Edit</th>
                                                  <th
@@ -125,8 +128,8 @@
                                                              </div>
                                                          </div>
                                                      </td>
-                                                             
-                                                           
+
+
                                                      <td class="text-xs font-weight-bold mb-0"><a
                                                              href="{{ route('admin.apk.download', ['filename' => $apk->apk_path]) }}">{{ $apk->apk_path }}</a>
                                                      </td>
@@ -134,6 +137,9 @@
                                                      </td>
                                                      <td class="text-xs font-weight-bold mb-0">{{ $apk->release_notes }}
                                                      </td>
+                                                      <td class="text-xs font-weight-bold mb-0">{{ $apk->created_at }}
+                                                     </td>
+
                                                      <td class="align-middle text-center text-sm"><a
                                                              href="{{ route('admin.update.apk', ['id' => $apk->id]) }}"
                                                              class="badge badge-sm bg-gradient-secondary">Edit</a></td>
@@ -149,7 +155,6 @@
                          </div>
                      </div>
                  </div>
-                 </main>
              @endsection
              @section('paginate')
                  <div class="paginate">{{ $filteredApks->links() }}

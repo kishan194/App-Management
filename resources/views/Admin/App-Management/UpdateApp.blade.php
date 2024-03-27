@@ -144,7 +144,7 @@
                                                 <label for="example-text-input" class="form-control-label">Publish
                                                     Status:</label>
                                                 <label for="publish_status"></label>
-                                                <select class="form-control border" name="publish_status">
+                                                <select class="form-select" name="publish_status">
                                                     <option value="published">Published</option>
                                                     <option value="unpublished">Unpublished</option>
                                                 </select>

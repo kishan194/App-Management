@@ -46,6 +46,7 @@ class ApkUploadController extends Controller
             $query->where('name', 'LIKE', '%' . $searchQuery . '%');
         });
     }
+    $apkQuery->orderBy('created_at', 'desc');
     $filteredApks = $apkQuery->paginate(5);
     $appNames = AppManage::pluck('name', 'id');
     return view('Admin.Apk-upload.index', compact('filteredApks', 'appNames'));

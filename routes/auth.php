@@ -57,12 +57,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
          
-    Route::get('ViewApp',[UserController::class,'viewApp'])->name('View-App');
-
-    Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');
+   
 
     Route::get('app/search',[UserController::class,'viewApp'])->name('search.app');
 
     Route::get('apkDownload/{filename}',[UserController::class,'download'])->name('apk.download');
 
     });
+
+    Route::get('ViewApp',[UserController::class,'viewApp'])->name('View-App');
+    Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');

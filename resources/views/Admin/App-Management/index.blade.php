@@ -49,8 +49,8 @@
 
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form action="{{ route('admin.search.app') }}" method="GET" class="mb-3">
-                                        <div class="input-group align-items-center px-4 mt-3">
+                                    <form action="{{ route('admin.search.app') }}" method="GET">
+                                        <div class="input-group align-items-center px-4">
                                             <input type="text" name="search" class="form-control"
                                                 placeholder="Search by App Name">
                                             <button type="submit" class="btn btn-primary mt-3">Search</button>
@@ -58,8 +58,8 @@
                                     </form>
                                 </div>
 
-                                <div class="col-lg-6 pt-5 px-5">
-                                    <div class="d-flex align-items-center">
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center px-4 mt-4">
                                         <a href="{{ route('admin.App.create') }}" class="btn btn-primary btn-sm ms-auto">ADD
                                             App</a>
                                     </div>
@@ -89,7 +89,7 @@
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Image</th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs opacity-7">
+                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Package Name</th>
                                                 <th class="text-center text-uppercase text-secondary text-xxs opacity-7">
                                                     Meta Keywords</th>
@@ -98,7 +98,7 @@
                                                 <th class="text-center text-uppercase text-secondary text-xxs  opacity-7">
                                                     Publish Status</th>
                                                 <th class="text-center text-uppercase text-secondary text-xxs opacity-7">
-                                                    View Apk</th>
+                                                    Release Apk</th>
                                                 <th class="text-center text-uppercase text-secondary text-xxs  opacity-7">
                                                     Edit</th>
                                                 <th class="text-center text-uppercase text-secondary text-xxs  opacity-7">
@@ -134,7 +134,7 @@
                                                                 alt="Example Image"></span>
                                                     </td>
                                                     <td>
-                                                        <p class="text-xs font-weight-bold mb-0 px-3">
+                                                        <p class="text-xs font-weight-bold mb-0">
                                                             {{ $item->PackageName }}</p>
                                                     </td>
                                                     <td>
@@ -150,7 +150,7 @@
                                                             {{ $item->publish_status }}</p>
                                                     </td>
                                                     <td class="align-middle text-center text-sm"><a
-                                                            href="{{ route('admin.single.apk', ['id' => $item->id]) }}"class="badge badge-sm bg-gradient-success">ViewApk</a>
+                                                            href="{{ route('admin.single.apk', ['id' => $item->id]) }}"class="badge badge-sm bg-gradient-success">Release Apk</a>
                                                     </td>
                                                     <td class="align-middle text-center text-sm"><a
                                                             href="{{ route('admin.update.app', ['id' => $item->id]) }}"
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-        </main>
+        
     @endsection
     @section('script')
         <script>
@@ -175,8 +175,9 @@
             }, 4000);
         </script>
     @endsection
+
     @section('paginate')
-        <div class="paginate">{{ $app->links() }}</div>
+        <div class="paginate" style="color:white;">{{ $app->links() }}</div>
     @endsection
 
     @section('footer')
@@ -185,3 +186,4 @@
 </body>
 
 </html>
+    

@@ -36,46 +36,60 @@
 
 
 @section('content')
-<body class="g-sidenav-show   bg-gray-100">
-  <main class="main-content position-relative border-radius-lg ">
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-        
-              <h6>Details App</h6>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-    <div>
-        <form action="{{ route('search.app') }}" method="GET" class="mr-2">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control"  style="width: 300px; height:40px ;margin-right:5px; margin-left:5px" placeholder="Search by App Name">
-                <button type="submit" class="btn btn-info">Search</button>
-            </div>
-        </form>
-    </div>
-</div>
+ <body class="g-sidenav-show   bg-gray-100">
+        <main class="main-content position-relative border-radius-lg ">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-header pb-0">
+                            </div>
+                            {{-- <div class="row">
+                                <div class="col-lg-6">
+                                    <form action="{{ route('search.app') }}" method="GET" class="mb-3">
+                                        <div class="input-group align-items-center px-4 mt-3">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Search by App Name">
+                                            <button type="submit" class="btn btn-primary mt-3">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div> --}}
+
+                            <div class="card-header pb-0">
+                                <h6>Details App</h6>
+                            </div>
         <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                    <table class="table align-items-center mb-0">
                       <thead>
                          <tr>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">App Name</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">ADescription</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Image</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Package Name</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Publish_Status</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Download Apk</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Version_name</th>
-                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" style="min-width: 100px;">Release_Notes</th>
+                                  <th class="ttext-uppercase text-secondary text-xxs font-weight-bolder opacity-7">App Name</th>
+                                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Logo</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Package Name</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Publish_Status</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Download Apk</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Version_name</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Release_Notes</th>
                         </tr>
                      </thead>
+                      <tbody>
                            @foreach ($apps as $item )
-                            <tbody style="text-align:center">
+                           
                                  <tr>
-
-                                      <td class="align-middle text-center text-sm">{{ $item->name }}</td> 
+                                        
+                                      <td>
+                                                        <div class="d-flex px-3 py-1">
+                                                            <div>
+                                                                {{ $item->name }}
+                                                            </div>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                      <td class="text-xs font-weight-bold mb-0">{{$item->description}}    </td>         
                                       <td class="align-middle text-center text-sm"><img src="{{ asset('logo/' . $item->logo) }}" class="rounded-circle" width="50" height="50" alt="{{$item->name}}"></td> 
                                       <td class="align-middle text-center text-sm"><img src="{{ asset('images/' . $item->image) }}" class="rounded-circle" width="50" height="50" alt="{{$item->name}}"></td> 
                                       <td class="align-middle text-center text-sm">{{$item->PackageName}}</</td> 
@@ -84,8 +98,9 @@
                                       <td class="align-middle text-center text-sm">{{$item->version_name}}</td> 
                                       <td class="align-middle text-center text-sm">{{$item->release_notes}}</td>        
                                  </tr>  
-                              </tbody>   
+                               
                        @endforeach
+                       </tbody>  
                        </table>
                 </table>
               </div>

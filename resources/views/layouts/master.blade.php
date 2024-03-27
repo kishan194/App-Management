@@ -18,6 +18,7 @@
 </body>
 @yield('script')
 
+
 @yield('paginate')
 
 @yield('footer')

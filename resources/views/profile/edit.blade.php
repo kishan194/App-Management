@@ -44,16 +44,25 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-        
               <h6>Profile</h6>
-            </div>
-<div class="py-2">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="p-4 rounded">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
+            </div> 
+
+      <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <div class="d-flex align-itmes-center">
+                                </div>
+                            </div>
+                            <div class="card-body ">
+                                <p class="text-uppercase text-sm">Add App</p>
+                               <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                    @include('profile.partials.update-profile-information-form')
+                                             </div>
+                                        </div>
+   
                 <div class="p-4 rounded">
                     @include('profile.partials.update-password-form')
                 </div>

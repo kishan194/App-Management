@@ -41,27 +41,30 @@
             <span class="nav-link-text ms-1">View App</span>
           </a>
         </li>
+       <ul class="navbar-nav">
+    @auth
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('profile.edit') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Update Profile</span>
-          </a>
+            <a class="nav-link" href="{{ route('profile.edit') }}">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Update Profile</span>
+            </a>
         </li>
-
         <li class="nav-item">
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="btn btn-link nav-link d-flex align-items-center">
-            <div class="icon icon-shape icon-sm border-radius-md text-danger me-2 d-flex align-items-center justify-content-center">
-                <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Logout</span>
-        </button>
-    </form>
-</li>
-     </ul>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-link nav-link d-flex align-items-center">
+                    <div class="icon icon-shape icon-sm border-radius-md text-danger me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Logout</span>
+                </button>
+            </form>
+        </li>
+    @endauth
+</ul>
+
     </div>
   </aside>
   @include('layouts.navigation')
