@@ -1,17 +1,3 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Argon Dashboard 2 by Creative Tim
+   Admin Login
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -75,7 +61,7 @@
             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
               <div class="card card-plain">
                 <div class="card-header pb-0 text-start">
-                  <h4 class="font-weight-bolder">Sign In</h4>
+                  <h4 class="font-weight-bolder">Admin Login</h4>
                   <p class="mb-0">Enter your email and password to sign in</p>
                 </div>
                 <div class="card-body">

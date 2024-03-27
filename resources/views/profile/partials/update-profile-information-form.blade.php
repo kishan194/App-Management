@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+           Profile Information
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            Update your account's profile information and email address.
         </p>
     </header>
 
@@ -16,17 +16,27 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+    
 
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+         <div class="col-md-6">
+            <div class="form-group">
+            <label for="name" class="form-control-label">Name</label>
+            <input id="name" name="name" type="text" class="form-control" value="{{old('name', $user->name)}}" required autofocus autocomplete="name">
+              @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
         </div>
+         </div>
 
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+           <div class="col-md-6">
+            <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" class="form-control" value="{{old('email', $user->email)}}" required autocomplete="username" >
+              @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+                </div>
+                </div>  
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
@@ -45,7 +55,6 @@
                     @endif
                 </div>
             @endif
-        </div>
 
         <div class="flex items-center gap-4">
             <button type="submit" class="btn btn-primary">Save</button>

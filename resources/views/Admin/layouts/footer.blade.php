@@ -1,24 +1,16 @@
-<style>
-   .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    margin-left:-23px;
-}
-span{
-       margin-right:20%;
-}
-</style> 
- <footer class="footer bg-dark text-white text-center py-3">
-        <div class="container">
-            <span>&copy; 2024 Hyvikk Solutions. All rights reserved.</span>
+ <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Hyvikk Solutions</a>
+                for a better web.
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </footer>

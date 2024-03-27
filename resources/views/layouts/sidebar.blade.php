@@ -64,4 +64,5 @@
      </ul>
     </div>
   </aside>
+  @include('layouts.navigation')
 </body>
