@@ -17,6 +17,7 @@ class ApkUpload extends Model
         'version_name',
         'release_notes'
 ];
+protected $dateFormat = 'Y-m-d H:i:s';
 
     public function appManage()
     {

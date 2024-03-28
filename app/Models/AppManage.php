@@ -22,6 +22,7 @@ class AppManage extends Model
                  'meta_description',
                  'publish_status'
     ];
+    protected $dateFormat = 'Y-m-d H:i:s';
     public function apkUpload()
     {
         return $this->hasMany(ApkUpload::class,'apk_path');
