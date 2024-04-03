@@ -18,7 +18,7 @@ class UserController extends Controller
           $query->where('name', 'LIKE', "%$searchQuery%");
       }
   
-      $app = $query->paginate(5);
+      $app = $query->get();
               return view('User.viewlist',compact('app'));
         }
 

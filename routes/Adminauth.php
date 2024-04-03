@@ -55,7 +55,7 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::post('logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
           Route::get('create',[AppManageController::class,'create'])->name('App.create');
-
+          Route::post('upload',[AppManageController::class,'upload'])->name('upload.image');
           Route::post('store',[AppManageController::class,'AppStore'])->name('App.Store');
 
           Route::get('index',[AppManageController::class,'index'])->name('App.index');
@@ -75,6 +75,7 @@ Route::group(['middleware' => ['guest:admin'],'prefix'=>'admin' , 'as' =>'admin.
           Route::post('apkStore',[ApkUploadController::class,'ApkStore'])->name('apk.Store');
 
           Route::get('apkindex',[ApkUploadController::class,'ApkIndex'])->name('apk.Index');
+          
 
           Route::get('apk/{filename}',[ApkUploadController::class,'download'])->name('apk.download');
 

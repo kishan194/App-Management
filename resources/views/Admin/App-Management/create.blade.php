@@ -102,12 +102,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-
+                                    
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="example-text-input" class="form-control-label">Meta
                                                     Description:</label>
-                                                <textarea class="form-control border" placeholder="Meta Description" name="meta_description">{{ old('meta_description') }}</textarea>
+                                                <textarea class="form-control border" id="editor" placeholder="Meta Description" name="meta_description">{{ old('meta_description') }}</textarea>
+                                                {{-- <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script> 
+                                                 <script>CKEDITOR.replace( 'editor',{
+                                                   filebrowserUploadUrl:"{{route('admin.upload.image',['_token' => csrf_token()])}}",
+                                                    filebrowserUploadMethod:"form",
+                                                   } );</script>  --}}
                                                 @error('meta_description')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror

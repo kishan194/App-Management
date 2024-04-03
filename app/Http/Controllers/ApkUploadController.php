@@ -14,6 +14,7 @@ class ApkUploadController extends Controller
         $apk = AppManage::pluck('name', 'id');
         return view('Admin.Apk-upload.create',compact('apk'));
     }
+   
     public function ApkStore(Request $request){
         // dd($request->all());
         $request->validate([

@@ -31,8 +31,8 @@
 @endsection
 
 @section('content')
-
-    <body class="g-sidenav-show   bg-gray-100">
+   
+     <body class="g-sidenav-show   bg-gray-100">
         <main class="main-content position-relative border-radius-lg ">
             <div class="container-fluid py-4">
                 <div class="row">
@@ -41,7 +41,7 @@
                             <div class="card-header pb-0">
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <form action="{{ route('search.app') }}" method="GET" class="mb-3">
                                         <div class="input-group align-items-center px-4 mt-3">
                                             <input type="text" name="search" class="form-control"
@@ -51,57 +51,40 @@
                                     </form>
                                 </div>
                             </div>
-
                             <div class="card-header pb-0">
-                                <h6>View App</h6>
-                            </div>
-                            <div class="card-body px-0 pt-0 pb-2">
-                                <div class="table-responsive p-0">
-                                    <table class="table align-items-center mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th
-                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    App Name</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                    App Details</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($app as $item)
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-3 py-1">
-                                                            <div>
-                                                                {{ $item->name }}
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-xs font-weight-bold mb-0"><a
-                                                            href="{{ route('detail.app', ['search' => $item->name]) }}"
-                                                            class="badge badge-sm bg-gradient-primary">Details App</a></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    
-                                </div>
-                            </div>
-                        </div>
+                                <h4>View App</h4>
+                            
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach ($app as $item)
+        <div class="col">
+            
+            <a href="{{ route('detail.app', ['search' => $item->name]) }}" class="text-decoration-none">
+                <div class="card h-100" style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="{{ asset('images/' . $item->image) }}" class="card-img-top mt-3" style="width: 143.5px; height: 143.5px; border-radius: 50%;" alt="...">
+                    <div class="card-body text-center">
+                        {{-- <img src = " {{asset('logo/' . $item->logo)}}" class="card-img-top" width="64px" height="64px"  style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;" > --}}
+                        <h5 class="card-title">{{ $item->name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $item->description }}</h6>
                     </div>
                 </div>
+            </a>
+        </div>
+    @endforeach 
+</div>
+</main>
+</body>
+
+
+
             @endsection
 
-            @section('paginate')
+            {{-- @section('paginate')
                 <div class="paginate">{{ $app->links() }}</div>
-            @endsection
+            @endsection --}}
 
             @section('footer')
                 @include('Admin.layouts.footer')
             @endsection
-</body>
+
 
 </html>

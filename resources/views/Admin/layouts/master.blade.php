@@ -15,10 +15,12 @@
 @yield('sidebar')
 <body>
      @yield('content')
-</body>
+
 @yield('script')
 
 @yield('paginate')
 
+
+</body>
 @yield('footer')
 </html>
