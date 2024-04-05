@@ -60,7 +60,7 @@
             
             <a href="{{ route('detail.app', ['search' => $item->name]) }}" class="text-decoration-none">
                 <div class="card h-100" style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <img src="{{ asset('images/' . $item->image) }}" class="card-img-top mt-3" style="width: 143.5px; height: 143.5px; border-radius: 50%;" alt="...">
+                    <img src="{{ asset('logo/' . $item->logo) }}" class="card-img-top mt-3" style="width: 143.5px; height: 143.5px; border-radius: 50%;" alt="...">
                     <div class="card-body text-center">
                         {{-- <img src = " {{asset('logo/' . $item->logo)}}" class="card-img-top" width="64px" height="64px"  style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;" > --}}
                         <h5 class="card-title">{{ $item->name }}</h5>

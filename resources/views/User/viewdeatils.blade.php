@@ -22,6 +22,7 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('css/argon-dashboard.css')}}" rel="stylesheet" />
+  
 </head>
 @endsection
 
@@ -56,29 +57,91 @@
                                 </div>
                             </div> --}}
 
-                            <div class="card-header pb-0">
-                                <h4>Details App</h4>
-                            
-     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<style>
+
+.carousel-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.carousel-inner {
+    display: inline-block;
+}
+
+.carousel-inner img {
+    margin-right: 10px; /* Adjust margin between images as needed */
+}
+.enlarge-on-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.enlarge-on-hover:hover {
+    transform: scale(1.2);
+}
+
+</style>
+      <div class="card-header pb-0">
+    <div class="row align-items-center">
+          </div>
+</div>
+        @php
+            // Find the highest version_name
+            $highestVersion = $apps->max('version_name');
+        @endphp
+       <div class="col mx-5 mb-5">
     @foreach ($apps as $item)
-    <div class="col">
-        <div class="card">
-            <img src="{{ asset('logo/' . $item->logo) }}" class="card-img-top rounded" width="240px" height="240px" alt="{{ $item->name }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ $item->name }}</h5>
-                <p class="card-text"> Description:{{ $item->description }}</p>
-                <ul class="list-unstyled">
-                    <li>app_id: {{$item->app_id}}</li>
-                    <li>Package Name: {{ $item->PackageName }}</li>
-                    <li>Publish Status: {{ $item->publish_status }}</li>
-                    <li>Version: {{ $item->version_name }}</li>
-                    <li>Release Notes: {{ $item->release_notes }}</li>
-                </ul>
-                <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary">Download APK</a>
+        @if ($item->version_name == $highestVersion)
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>{{ $item->name }}</h1>
+                    <p>Description: {{ $item->description }}</p>
+                    <p>
+                        <span>Version: {{ $item->version_name }}</span> |
+                        <span>Package Name: {{ $item->PackageName }}</span> |
+                        <span>Publish Status: {{ $item->publish_status }}</span>
+                        
+                    </p>
+                    <p>Release Notes: {{ $item->release_notes }}</p>
+                    
+                    <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="enlarge-on-hover" style="border-radius: 20px;"><br><br>
+
+                    <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('logo/' . $item->logo) }}" alt="{{ $item->name }}" style="max-height: 200px; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="col">
+                   
+            </div>
+</div>
+        @endif
     @endforeach
+</div>
+
+  
+
+                          {{--   <div class="col-md-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->name }}</h5>
+                                    <p class="card-text">Description: {{ $item->description }}</p>
+                                    <p class="card-text">
+                                        <span>Version: {{ $item->version_name }}</span> |
+                                        <span>Package Name: {{ $item->PackageName }}</span> |
+                                        <span>Publish Status: {{ $item->publish_status }}</span>
+                                    </p>
+                                    <p class="card-text">Release Notes: {{ $item->release_notes }}</p>
+                                    <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+    </div>
+</div> --}}
+
+
 </div>
 </main>
 </body>
