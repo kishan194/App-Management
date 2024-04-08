@@ -80,18 +80,24 @@
 }
 
 </style>
-      <div class="card-header pb-0">
+    <div class="card-header pb-0">
     <div class="row align-items-center">
-          </div>
+        <!-- You can add any content you want in the header -->
+    </div>
 </div>
-        @php
-            // Find the highest version_name
-            $highestVersion = $apps->max('version_name');
-        @endphp
-       <div class="col mx-5 mb-5">
+
+<div class="container-fluid">
+    @php
+        // Find the highest version_name
+        $highestVersion = $apps->max('version_name');
+    @endphp
+
     @foreach ($apps as $item)
         @if ($item->version_name == $highestVersion)
-            <div class="row">
+            <div class="row mx-2 mb-5">
+                <div class="col-md-4">
+                    <img src="{{ asset('logo/' . $item->logo) }}" alt="{{ $item->name }}" class="img-fluid rounded" style="max-height: 200px;">
+                </div>
                 <div class="col-md-8">
                     <h1>{{ $item->name }}</h1>
                     <p>Description: {{ $item->description }}</p>
@@ -99,22 +105,17 @@
                         <span>Version: {{ $item->version_name }}</span> |
                         <span>Package Name: {{ $item->PackageName }}</span> |
                         <span>Publish Status: {{ $item->publish_status }}</span>
-                        
                     </p>
                     <p>Release Notes: {{ $item->release_notes }}</p>
                     
-                    <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="enlarge-on-hover" style="border-radius: 20px;"><br><br>
+                    <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a><br><br>
+                    
+                </div>
+               <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid rounded" style="max-width: 100%; max-height: 500px;">
 
-                    <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a>
-                </div>
-                <div class="col-md-4">
-                    <img src="{{ asset('logo/' . $item->logo) }}" alt="{{ $item->name }}" style="max-height: 200px; border-radius: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                </div>
+
+
             </div>
-            <div class="col">
-                   
-            </div>
-</div>
         @endif
     @endforeach
 </div>
@@ -142,7 +143,7 @@
 </div> --}}
 
 
-</div>
+
 </main>
 </body>
 
