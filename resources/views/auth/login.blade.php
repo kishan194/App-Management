@@ -1,11 +1,16 @@
+  @extends('layouts.master')
+
+  @section('title')
+        Login
+  @endsection
+
+  @section('styles')
   <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-  <title>
-      Login
-  </title>
+ 
     <link href="{{asset('css/nucleo-icons.css')}}" rel="stylesheet" />
   <link href="{{asset('css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
@@ -14,45 +19,13 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('css/argon-dashboard.css')}}" rel="stylesheet" />
 </head>
+@endsection
 
-<body class="">
-  <div class="container position-sticky z-index-sticky top-0">
-    <div class="row">
-      <div class="col-12">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
-          <div class="container-fluid">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
-              Hyvikk Solutions
-            </a>
-            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon mt-2">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navigation">
-              <ul class="navbar-nav mx-auto">
-                
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="{{route('register')}}">
-                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                    Sign Up
-                  </a>
-                </li>
+@section('header')
+    @include('layouts.navbar')
+@endsection
 
-              </ul>
-              <ul class="navbar-nav d-lg-block d-none">
-                <li class="nav-item">
-                  <a href="{{route('admin.login')}}" class="nav-link me-2"> <i class="fas fa-key opacity-6 text-dark me-1"></i>Admin Login</a>
-                </li>
-              </ul>
-
-            </div>
-          </div>
-        </nav>
-        
+@section('content')        
   <main class="main-content  mt-0">
     <section>
       <div class="page-header min-vh-100">
@@ -112,3 +85,9 @@
       </div>
     </section>
   </main>   
+  @endsection
+
+  @section('footer')
+    @include('Admin.layouts.footer')
+@endsection
+  

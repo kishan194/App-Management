@@ -100,21 +100,21 @@
                 </div>
                 <div class="col-md-8">
                     <h1>{{ $item->name }}</h1>
-                    <p>Description: {{ $item->description }}</p>
+                   
                     <p>
-                        <span>Version: {{ $item->version_name }}</span> |
-                        <span>Package Name: {{ $item->PackageName }}</span> |
-                        <span>Publish Status: {{ $item->publish_status }}</span>
-                    </p>
-                    <p>Release Notes: {{ $item->release_notes }}</p>
+                         <span>Version: {{ $item->version_name }}</span>   </p>
+                       <p> <span>Package Name: {{ $item->PackageName }}</span> </p>
+                        <p><span>Publish Status: {{ $item->publish_status }}</span></p>
+                  
+                   
                     
                     <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a><br><br>
                     
                 </div>
                <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid rounded" style="max-width: 100%; max-height: 500px;">
 
-
-
+                    <p>Description: {{ $item->description }}</p>
+                    <p>Release Notes: {{ $item->release_notes }}</p>
             </div>
         @endif
     @endforeach
