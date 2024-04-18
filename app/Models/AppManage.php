@@ -20,7 +20,9 @@ class AppManage extends Model
                  'PackageName',
                  'meta_keywords',
                  'meta_description',
-                 'publish_status'
+                 'publish_status',
+                 'created_at',
+                 'updated_at'
     ];
     protected $dateFormat = 'Y-m-d H:i:s';
     public function apkUpload()

@@ -4,7 +4,7 @@
 <html lang="en">
 
 @section('title')
-    View App
+    All Apps
 @endsection
 
 @section('styles')
@@ -52,24 +52,25 @@
                                 </div>
                             </div>
                             <div class="card-header pb-0">
-                                <h4>View App</h4>
+                                <h4>All Apps</h4>
                             
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach ($app as $item)
-        <div class="col">
-            
-            <a href="{{ route('detail.app', ['search' => $item->name]) }}" class="text-decoration-none">
-                <div class="card h-100" style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <img src="{{ asset('logo/' . $item->logo) }}" class="card-img-top mt-3" style="width: 143.5px; height: 143.5px; border-radius: 50%;" alt="...">
-                    <div class="card-body text-center">
-                        {{-- <img src = " {{asset('logo/' . $item->logo)}}" class="card-img-top" width="64px" height="64px"  style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;" > --}}
-                        <h5 class="card-title">{{ $item->name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $item->description }}</h6>
-                    </div>
+  @foreach ($app as $item)
+    <div class="col">
+        <a href="{{ route('detail.app', ['search' => $item->name]) }}" class="text-decoration-none">
+            <div class="card h-100" style="border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <img src="{{ asset('logo/' . $item->logo) }}" class="card-img-top mt-3" style="width: 143.5px; height: 143.5px; border-radius: 50%;" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ $item->name }}</h5>
+                    <strong>Version Name:</strong> {{ $item->version_name}}
+                    <!-- Use optional() to safely access the relationship -->
+                    {{-- <p>Version: {{ optional($item->apkUpload)->version_name }}</p> --}}
+                    <h6 class="card-title">Last Updated: {{ date('M d, Y', strtotime($item->updated_at)) }}</h6>
                 </div>
-            </a>
-        </div>
-    @endforeach 
+            </div>
+        </a>
+    </div>
+@endforeach
 </div>
 </main>
 </body>

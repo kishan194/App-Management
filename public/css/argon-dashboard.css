@@ -672,7 +672,6 @@ progress {
 }
 
 .container,
-.container-fluid,
 .container-sm,
 .container-md,
 .container-lg,
@@ -683,6 +682,12 @@ progress {
   width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 1);
   padding-left: calc(var(--bs-gutter-x) * 1);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
+  width: 100% !important;
   margin-right: auto;
   margin-left: auto;
 }
@@ -758,6 +763,7 @@ progress {
 
 .col {
   flex: 1 0 0%;
+  /* padding:0px; */
 }
 
 .row-cols-auto>* {

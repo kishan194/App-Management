@@ -4,7 +4,10 @@
 <html lang="en">
 
 @section('title')
-     Details App
+    @foreach ($apps as $item)
+        {{ $item->name }}
+        @break
+    @endforeach
 @endsection
 
 @section('styles')
@@ -31,9 +34,9 @@
 @endsection
 
  
- {{-- @section('header')
-      @include('layouts.navigation')
- @endsection --}}
+  @section('header')
+   
+ @endsection 
 
 
 @section('content')
@@ -111,10 +114,22 @@
                     <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a><br><br>
                     
                 </div>
-               <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid rounded" style="max-width: 100%; max-height: 500px;">
+              <!-- Main Image -->
+<img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid rounded" style="max-width: 100%; max-height: 500px;">
 
-                    <p>Description: {{ $item->description }}</p>
-                    <p>Release Notes: {{ $item->release_notes }}</p>
+
+<!-- Release Notes -->
+<div>
+    <h2>Release Notes</h2>
+    <p>{{ $item->release_notes }}</p>
+</div>
+
+<!-- Description -->
+<div>
+    <h2>Description</h2>
+    <p>{{ $item->description }}</p>
+</div>
+
             </div>
         @endif
     @endforeach
