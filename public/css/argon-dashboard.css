@@ -11068,6 +11068,7 @@ fieldset:disabled .btn {
 
 .min-height-300 {
   min-height: 300px !important;
+  /* position: fixed !important; */
 }
 
 .min-height-400 {

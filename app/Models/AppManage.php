@@ -27,6 +27,6 @@ class AppManage extends Model
     protected $dateFormat = 'Y-m-d H:i:s';
     public function apkUpload()
     {
-        return $this->hasMany(ApkUpload::class,'apk_path');
+        return $this->hasMany(ApkUpload::class,'apk_path','version_name');
     }
 }
