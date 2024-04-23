@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\forntendcontroller;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,11 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-         
    
-
-   
-
     Route::get('apkDownload/{filename}',[UserController::class,'download'])->name('apk.download');
 
     });
@@ -68,3 +65,8 @@ Route::middleware('auth')->group(function () {
     Route::get('app/search',[UserController::class,'viewApp'])->name('search.app');
     Route::get('all-apps',[UserController::class,'viewApp'])->name('View-App');
     Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');
+
+
+    Route::get('apps/search',[UserController::class,'ViewApps'])->name('search.apps');
+    Route::get('AllApps',[forntendcontroller::class,'ViewApps'])->name('View-Apps');
+    Route::get('detailApps',[forntendcontroller::class,'detailsApps'])->name('detail.apps');

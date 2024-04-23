@@ -1,6 +1,6 @@
  @extends('Admin.layouts.master')
  @section('title')
-     Admin DashBoard
+     Manage Apk
  @endsection
 
  @section('styles')

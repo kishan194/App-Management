@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
 
-    public function home(){
-            $app = AppManage::all();
-            return view('welcome',compact('app'));
-    }
+    public function home()
+{
+    $app = AppManage::orderBy('created_at', 'desc')->get();
+    return view('welcome', compact('app'));
+}
 
 
    public function viewApp(Request $request)
@@ -26,7 +27,7 @@ class UserController extends Controller
                          ->groupBy('app_id');
     
     // Join the subquery with the main query to filter by the maximum version_name
-    $query = AppManage::select('app_manages.id', 'app_manages.name', 'app_manages.description', 'app_manages.logo', 'app_manages.image', 'app_manages.PackageName', 'app_manages.publish_status','apk_uploads.version_name','apk_uploads.updated_at')
+    $query = AppManage::select('app_manages.id', 'app_manages.name', 'app_manages.description', 'app_manages.logo', 'app_manages.image', 'app_manages.PackageName', 'app_manages.publish_status','app_manages.updated_at','apk_uploads.version_name')
                       ->join('apk_uploads', function($join) {
                           $join->on('app_manages.id', '=', 'apk_uploads.app_id');
                       })
@@ -34,7 +35,6 @@ class UserController extends Controller
                           $join->on('app_manages.id', '=', 'sub.app_id')
                                ->on('apk_uploads.version_name', '=', 'sub.max_version');
                       });
-    
     // If there's a search query, filter the results
     if ($searchQuery) {
         $query->where('app_manages.name', 'LIKE', "%$searchQuery%");
@@ -46,78 +46,6 @@ class UserController extends Controller
     // Pass the data to the view
     return view('User.viewlist', compact('app'));
 }
-
-    
-
-// public function viewApp(){
-
-//     $app  = AppManage::select('app_manages.id', 'app_manages.name', 'app_manages.description', 'app_manages.logo', 'app_manages.image', 'app_manages.PackageName', 'app_manages.publish_status', 'apk_uploads.version_name')
-//       ->leftJoin('apk_uploads', 'app_manages.id', '=', 'apk_uploads.app_id');
-
-//       return view('User.viewlist',compact('app'));
-// }
-
-
-
-// public function viewApp(){
-//     $app = AppManage::all();
-//     return view('User.viewlist',compact('app'));
-// }
-
-
-
-
-// public function viewApp()
-// {
-//     $app = Appmanage::with('apkUpload')->get();
-//     return view('User.viewlist', compact('app'));
-// }
-
-// public function viewApp()
-// {
-//     // Retrieve all AppManage records with their associated ApkUpload data
-//     $app = AppManage::with('apkUpload')->get();
-
-//     // Pass the data to the view
-//     return view('User.viewlist', compact('app'));
-// }
-
-// public function viewApp(Request $request)
-//     {
-//         // Fetch data from the 'AppManage' model
-//         $appManageData = AppManage::select('id', 'name', 'logo', 'updated_at')->get();
-
-//         // Fetch data from the 'ApkUpload' model
-//         $apkUploadData = ApkUpload::select('app_id', 'version_name')->get();
-
-//         // Merge the collections from both models
-//         $mergedData = $appManageData->concat($apkUploadData);
-
-//          // Pass the merged data to the view
-//        return view('User.viewlist', compact('mergedData'));
-//     }
-
-// public function viewApp(Request $request)
-// {
-//     $searchQuery = $request->input('search');
-
-//     // Query the AppManage model with search functionality
-//     $query = AppManage::query();
-
-//     if ($searchQuery) {
-//         $query->where('name', 'LIKE', "%$searchQuery%");
-//     }
-
-//     // Fetch filtered records from the AppManage model
-//     $apps = $query->get();
-
-//     // Fetch all records from the 'apk-uploads' module without filtering
-//     $allApps = ApkUpload::all();
-
-//     // Pass the retrieved records to the view
-//     return view('User.viewlist', compact('apps', 'allApps'));
-// }
-
    public function detailsApp(Request $request)
    {
     $searchQuery = $request->input('search');

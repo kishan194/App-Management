@@ -1,11 +1,9 @@
 @extends('layouts.master')
 
-<!DOCTYPE html>
-<html lang="en">
 
 @section('title')
     @foreach ($apps as $item)
-        {{ $item->name }}
+        {{ $item->name }} 
         @break
     @endforeach
 @endsection
@@ -29,23 +27,20 @@
 </head>
 @endsection
 
-@section('sidebar')
-      @include('layouts.sidebar')
-@endsection
-
  
-@section('header')
-   
-@endsection 
+  @section('header')
+   @include('layouts.navbar')
+ @endsection 
 
 
 @section('content')
+
  <body class="g-sidenav-show   bg-gray-100">
         <main class="main-content position-relative border-radius-lg ">
             <div class="container-fluid py-4">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card mb-4">
+                        <div class="card mt-7">
                             <div class="card-header pb-0">
                             </div>
                             {{-- <div class="row">
@@ -91,12 +86,10 @@
 
 <div class="container-fluid">
     @php
-        // Find the highest version_name
         $highestVersion = $apps->max('version_name');
     @endphp
 
     @foreach ($apps as $item)
-
         @if ($item->version_name == $highestVersion)
             <div class="row mx-2 mb-5">
                 <div class="col-md-4">
@@ -108,8 +101,8 @@
                     <p>
                        <span>Version: {{ $item->version_name }}</span>   </p>
                        <p> <span>Package Name: {{ $item->PackageName }}</span> </p>
-                        <p><span>Publish Status: {{ $item->publish_status }}</span></p>
-                  
+                       <p><span>Publish Status: {{ $item->publish_status }}</span></p>           
+                                       
                     <a href="{{ route('apk.download', ['filename' => $item['apk_path']]) }}" class="btn btn-primary download-link">Download APK</a><br><br>
                     
                 </div>
