@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Apps
+  Allapps
 @endsection
 
 @section('styles')
@@ -34,9 +34,9 @@
                             <div class="card-header pb-0"></div>
                             <div class="row">
                                 <div class="col-11 mx-5">
-                                    <form action="{{ route('search.app') }}" method="GET" class="mb-3">
+                                    <form action="{{ route('search.apps') }}" method="GET" class="mb-3">
                                         <div class="input-group align-items-center px-4 mt-3 mx-1">
-                                            <input type="text" name="search" class="form-control" style="margin-left:36px" placeholder="Search by App Name">
+                                            <input type="text" name="search" class="form-control" style="margin-left:36px" placeholder="Search for apps and games">
                                             <button type="submit" class="btn btn-primary mt-3">Search</button>
                                         </div>
                                     </form>

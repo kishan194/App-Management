@@ -67,6 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::get('detailApp',[UserController::class,'detailsApp'])->name('detail.app');
 
 
-    Route::get('apps/search',[UserController::class,'ViewApps'])->name('search.apps');
+    Route::get('apps/search',[forntendcontroller::class,'ViewApps'])->name('search.apps');
     Route::get('AllApps',[forntendcontroller::class,'ViewApps'])->name('View-Apps');
     Route::get('detailApps',[forntendcontroller::class,'detailsApps'])->name('detail.apps');
